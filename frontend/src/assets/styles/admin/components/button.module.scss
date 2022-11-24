@@ -1,0 +1,7 @@
+form,
+.modal {
+  & button,
+  [type='submit'] {
+    @apply rounded-[.4rem] text-center w-full;
+  }
+}

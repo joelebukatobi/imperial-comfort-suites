@@ -1,0 +1,18 @@
+nav {
+  ul {
+    @apply flex gap-x-[4rem] h-full;
+    & li {
+      @apply text-white font-semibold text-[1.4rem] flex flex-col gap-y-[.8rem] pt-[.8rem];
+      & hr {
+        @apply h-[.2rem] outline-none w-full border-none bg-[#FF9900] invisible;
+      }
+
+      &:hover {
+        @apply mt-0;
+        & hr {
+          @apply visible;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+footer {
+  @apply mt-[7.2rem] pt-[7.2rem] pb-[4rem] bg-[#FCFCFC];
+  & .top {
+    @apply flex justify-between;
+    & section {
+      & p,
+      & li {
+        @apply text-[1.4rem];
+      }
+      & img {
+        @apply h-[8rem] mb-[2.4rem];
+      }
+      & h4 {
+        @apply mb-[1.6rem];
+      }
+      & ul {
+        @apply space-y-[.8rem];
+      }
+
+      & form {
+        @apply flex space-x-[.8rem] mt-[1.6rem];
+
+        & input {
+          @apply h-[4.8rem] px-[1.6rem] py-0  rounded-[.2rem] w-[61.3%];
+        }
+
+        & button {
+          @apply h-[4.8rem] py-0 rounded-[.2rem] bg-[#2B3554] w-[38.6%];
+        }
+      }
+    }
+  }
+
+  & .bottom {
+    @apply flex justify-center mt-[10.4rem] text-[#A3A3A3];
+    & p {
+      @apply text-[1.4rem];
+    }
+  }
+}

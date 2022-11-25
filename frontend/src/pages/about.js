@@ -6,6 +6,6 @@ import Link from 'next/link';
 import Header from '@/global//layouts/Header';
 import Layout from '@/global//layouts/Layout';
 
-export default function Home() {
+export default function About() {
   return <Layout></Layout>;
 }

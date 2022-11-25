@@ -8,6 +8,8 @@ function MyApp({ Component, pageProps }) {
   const pathname = useRouter().pathname;
   if (pathname === '/admin' || pathname.includes('admin')) {
     require('../assets/styles/admin.scss');
+  } else {
+    require('../assets/styles/global.scss');
   }
 
   return (

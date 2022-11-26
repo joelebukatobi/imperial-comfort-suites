@@ -1,0 +1,106 @@
+.index {
+  & header {
+    & span {
+      @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+    }
+
+    & h2 {
+      @apply text-[3.7rem] my-[1.6rem];
+    }
+
+    & p {
+      @apply text-[1.8rem] text-center;
+    }
+    & ul {
+      @apply flex justify-between mt-[5.6rem];
+      & li {
+        @apply flex gap-x-[1.6rem] items-center text-[#474747];
+        & div {
+          @apply h-[6.4rem] w-[6.4rem] bg-[#FF9900]/5 rounded-full flex items-center justify-center;
+          & svg {
+            @apply h-[3.2rem] w-[3.2rem];
+          }
+        }
+      }
+    }
+  }
+  &__why {
+    @apply flex gap-x-[5.6rem] py-[20.8rem];
+    //
+    & > * {
+      @apply w-1/2;
+    }
+    //
+    & main {
+      @apply flex flex-col;
+      & header {
+        & p {
+          @apply w-[70%] text-left leading-[2.9rem];
+        }
+      }
+      & ul {
+        @apply flex justify-between mt-[5.6rem];
+        & li {
+          @apply flex gap-x-[1.6rem] items-center text-[#474747];
+          & div {
+            @apply h-[6.4rem] w-[6.4rem] bg-[#FF9900]/5 rounded-full flex items-center justify-center;
+            & svg {
+              @apply h-[3.2rem] w-[3.2rem];
+            }
+          }
+        }
+      }
+    }
+
+    & figure {
+      @apply relative;
+      &::after {
+        @apply absolute top-[-3.2rem] right-[-3.2rem] border-[.16rem] border-[#D9D9D9] h-[112%] w-full content-[''] z-[-1];
+      }
+    }
+  }
+
+  &__services {
+    //
+    @apply mb-[20.8rem];
+    //
+    & header {
+      @apply flex flex-col items-center justify-center;
+    }
+    //
+    & main {
+      @apply flex gap-x-[3.2rem] mt-[12rem];
+      & > * {
+        @apply w-1/2 border-[.16rem] border-[#F0F0F0] px-[3.2rem] pt-[4.8rem] pb-[10.4rem] rounded-[.8rem];
+      }
+      & figure {
+        & div {
+          @apply h-[8.8rem] w-[8.8rem] bg-[#FF9900]/5 rounded-full flex items-center justify-center mb-[5.6rem];
+          & svg {
+            @apply h-[4.8rem] w-[4.8rem];
+          }
+        }
+
+        & p {
+          @apply mt-[1.6rem] text-[1.8rem];
+        }
+      }
+    }
+  }
+
+  &__listings {
+    //
+    @apply mb-[20.8rem];
+    //
+    & header {
+      @apply flex flex-col items-center justify-center;
+
+      & p {
+        @apply w-[60%];
+      }
+    }
+    //
+    & main {
+    }
+  }
+}

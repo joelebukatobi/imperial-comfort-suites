@@ -47,23 +47,15 @@ export default function Reviews() {
           <Swiper
             loop={true}
             spaceBetween={20}
-            slidesPerView={1}
+            slidesPerView={2}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
-            breakpoints={{
-              576: {
-                slidesPerView: 1,
-              },
-
-              768: {
-                slidesPerView: 2,
-              },
-
-              1024: {
-                slidesPerView: 2,
-              },
-            }}
+            // breakpoints={{
+            //   576: {
+            //     slidesPerView: 1,
+            //   },
+            // }}
           >
             {reviews.map(({ id, review, stars }) => (
               <SwiperSlide>

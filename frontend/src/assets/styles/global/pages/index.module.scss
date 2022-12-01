@@ -11,18 +11,6 @@
     & p {
       @apply text-[1.8rem] text-center;
     }
-    & ul {
-      @apply flex justify-between mt-[5.6rem];
-      & li {
-        @apply flex gap-x-[1.6rem] items-center text-[#474747];
-        & div {
-          @apply h-[6.4rem] w-[6.4rem] bg-[#FF9900]/5 rounded-full flex items-center justify-center;
-          & svg {
-            @apply h-[3.2rem] w-[3.2rem];
-          }
-        }
-      }
-    }
   }
   &__why {
     @apply flex flex-col my-[8rem] md:flex-row md:gap-x-[5.6rem]  md:py-[20.8rem];
@@ -63,6 +51,16 @@
     //
     & header {
       @apply flex flex-col items-center justify-center w-full border-2;
+      & span {
+        @apply text-center w-full border-2;
+      }
+      & h2 {
+        @apply text-center w-full border-2;
+      }
+
+      & p {
+        @apply text-center w-full border-2;
+      }
     }
     //
     & main {

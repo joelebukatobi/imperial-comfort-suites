@@ -50,16 +50,16 @@
     @apply mb-[8rem] md:mb-[20.8rem];
     //
     & header {
-      @apply flex flex-col items-center justify-center w-full border-2;
+      @apply flex flex-col items-center justify-center w-full;
       & span {
-        @apply text-center w-full border-2;
+        @apply text-center w-full;
       }
       & h2 {
-        @apply text-center w-full border-2;
+        @apply text-center w-full;
       }
 
       & p {
-        @apply text-center w-full border-2;
+        @apply text-center w-full;
       }
     }
     //

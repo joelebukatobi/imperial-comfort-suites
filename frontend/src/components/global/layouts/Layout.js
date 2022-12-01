@@ -83,22 +83,24 @@ export default function Layout({ children }) {
                   <option value={3}>3 Bedroom</option>
                   <option value={4}>4 Bedroom</option>
                 </Select>
-                <Input
-                  value={minPrice}
-                  name={'minPrice'}
-                  onChange={(e) => setMinPrice(e.target.value)}
-                  type={'number'}
-                  required={'required'}
-                  placeholder={'Min Price'}
-                />
-                <Input
-                  value={maxPrice}
-                  name={'maxPrice'}
-                  onChange={(e) => setMaxPrice(e.target.value)}
-                  type={'number'}
-                  required={'required'}
-                  placeholder={'Max Price'}
-                />
+                <div className="md:!w-3/5 flex gap-x-[8%]">
+                  <Input
+                    value={minPrice}
+                    name={'minPrice'}
+                    onChange={(e) => setMinPrice(e.target.value)}
+                    type={'number'}
+                    required={'required'}
+                    placeholder={'Min Price'}
+                  />
+                  <Input
+                    value={maxPrice}
+                    name={'maxPrice'}
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                    type={'number'}
+                    required={'required'}
+                    placeholder={'Max Price'}
+                  />
+                </div>
                 <Button>Show</Button>
               </form>
             </section>

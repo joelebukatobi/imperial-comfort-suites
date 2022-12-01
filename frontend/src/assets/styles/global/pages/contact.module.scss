@@ -2,10 +2,10 @@
   //
   margin: 0 auto;
   //
-  @apply w-[79.1%] mt-[20.8rem] mb-[8rem] flex gap-x-[10%] justify-between;
+  @apply md:w-[79.1%] mt-[20.8rem] mb-[8rem] flex flex-col md:flex-row gap-x-[10%] justify-between;
 
   & header {
-    @apply w-[46%];
+    @apply md:w-[46%];
     & span {
       @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
     }
@@ -18,7 +18,10 @@
   & form {
     @apply w-full;
     & div {
-      @apply flex gap-x-[2.4rem] mb-[2.4rem];
+      @apply flex flex-col md:flex-row gap-x-[2.4rem] md:mb-[2.4rem];
+      & > * {
+        @apply mb-[2.4rem] md:mb-0;
+      }
     }
   }
 }

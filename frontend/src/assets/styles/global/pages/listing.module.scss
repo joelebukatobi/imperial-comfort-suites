@@ -1,4 +1,4 @@
 .listings {
   //
-  @apply mt-[20.8rem] mb-[20.8rem] flex justify-between gap-x-[2.4rem];
+  @apply mt-[20.8rem] mb-[20.8rem] flex flex-wrap gap-y-[3.2rem] md:gap-y-0 md:flex-nowrap md:justify-between gap-x-[2.4rem];
 }

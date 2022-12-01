@@ -7,6 +7,7 @@
       "@/app/*": ["components/app*"],
       "@/config/*": ["config/*"],
       "@/helpers/*": ["helpers/*"],
+      "@/utils/*": ["utils/*"],
       "@/features/*": ["features/*"],
       "@/store/*": ["store/*"],
       "@/styles/*": ["assets/styles/*"],

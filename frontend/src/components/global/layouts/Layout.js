@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -8,22 +8,19 @@ import Header from '@/global//layouts/Header';
 import Footer from '@/global//layouts/Footer';
 import Button from '@/global//elements/Button';
 import Input from '@/global//elements/Input';
+import Select from '@/global//elements/Select';
 // Images
 import homeHeader from '@/images//home-header.png';
-// Config & Helpers
-import { API_URL } from '@/config/index';
-// External Libraries
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '@/features//user/userActions';
+import aboutHeader from '@/images//about-image.png';
 
 export default function Layout({ children }) {
+  //
+  const [city, setCity] = useState('Dallas');
+  const [bedrooms, setBedroom] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
   // Assign next/router to a variable
   const pathname = useRouter().pathname;
-  const { data } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getUser());
-  }, []);
 
   return (
     <>
@@ -38,7 +35,6 @@ export default function Layout({ children }) {
               </p>
               <Button>Make an Enquiry</Button>
             </main>
-
             <section>
               <figure>
                 <Image src={homeHeader} alt="loading" layout="fill" priority />
@@ -52,19 +48,16 @@ export default function Layout({ children }) {
               <span>Trusted by thousands</span>
               <h2>Rent with us, Live like Royalty.</h2>
               <p>
-                <p>
-                  We are a local hospitality company in Dallas, Texas and we're looking for rentals just like yours. We
-                  are a team of professionals with years of experience in the real estate business dedicated to
-                  achieving one thing - getting you value for your property. We have built a reputation as the best in
-                  terms of innovation and efficient service delivery.
-                </p>
+                We are a local hospitality company in Dallas, Texas and we're looking for rentals just like yours. We
+                are a team of professionals with years of experience in the real estate business dedicated to achieving
+                one thing - getting you value for your property. We have built a reputation as the best in terms of
+                innovation and efficient service delivery.
               </p>
-              <Button>Make an Enquiry</Button>
             </main>
 
             <section>
               <figure>
-                <Image src={homeHeader} alt="loading" layout="fill" priority />
+                <Image src={aboutHeader} alt="loading" layout="fill" priority />
               </figure>
             </section>
           </header>
@@ -74,10 +67,38 @@ export default function Layout({ children }) {
             <section>
               <h2>Find your next home for your vacation</h2>
               <form>
-                <Input />
-                <Input />
-                <Input />
-                <Input />
+                <Input
+                  value={city}
+                  name={'city'}
+                  onChange={(e) => setCity(e.target.value)}
+                  type={'text'}
+                  required={'required'}
+                  placeholder={'City'}
+                  disabled={'disabled'}
+                />
+                <Select>
+                  <option value="">Bedrooms</option>
+                  <option value={1}>1 Bedroom</option>
+                  <option value={2}>2 Bedroom</option>
+                  <option value={3}>3 Bedroom</option>
+                  <option value={4}>4 Bedroom</option>
+                </Select>
+                <Input
+                  value={minPrice}
+                  name={'minPrice'}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  type={'number'}
+                  required={'required'}
+                  placeholder={'Min Price'}
+                />
+                <Input
+                  value={maxPrice}
+                  name={'maxPrice'}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  type={'number'}
+                  required={'required'}
+                  placeholder={'Max Price'}
+                />
                 <Button>Show</Button>
               </form>
             </section>
@@ -89,7 +110,11 @@ export default function Layout({ children }) {
               <h2>Feel free to contact us</h2>
               <main>
                 <figure>
-                  <svg></svg>
+                  <div>
+                    <svg>
+                      <use href="/images/sprite.svg#icon-email" />
+                    </svg>
+                  </div>
                   <figcaption>
                     <h4>Email Address</h4>
                     <p>info@imperialcomfortsuite.com</p>
@@ -97,7 +122,11 @@ export default function Layout({ children }) {
                 </figure>
                 <hr />
                 <figure>
-                  <svg></svg>
+                  <div>
+                    <svg>
+                      <use href="/images/sprite.svg#icon-phone" />
+                    </svg>
+                  </div>
                   <figcaption>
                     <h4>Phone Number</h4>
                     <p>(682) 283-7869</p>

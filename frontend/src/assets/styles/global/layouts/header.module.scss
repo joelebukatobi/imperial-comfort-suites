@@ -1,23 +1,27 @@
 .header {
   @apply bg-black;
   &__home {
-    @apply flex justify-between items-center max-w-[144rem] px-[3.2rem] h-[100vh];
+    @apply flex flex-col md:flex-row w-full h-auto md:justify-between md:items-center md:max-w-[144rem] md:h-[100vh] px-[3.2rem] relative;
     margin: 0 auto;
     & main {
-      @apply text-white w-[37%];
+      @apply w-full md:w-[37%];
 
       & h1 {
-        @apply mb-[1.6rem] text-[6.7rem];
+        @apply text-white text-[3.7rem] mb-[1.6rem] md:text-[6.7rem];
       }
 
       & p {
-        @apply mb-[4rem] text-[2.1rem];
+        @apply mb-[5.6rem] md:mb-[4rem] text-[2.1rem] text-white;
+      }
+
+      & button {
+        @apply mb-[3.2rem] md:mb-0;
       }
     }
     & section {
-      @apply w-1/2 h-full;
+      @apply w-full h-[50vh] md:w-1/2 md:h-full;
       & figure {
-        @apply absolute w-1/2 h-full right-0;
+        @apply absolute w-full md:h-full md:w-1/2 bottom-0 right-0;
       }
       & img {
         height: 100% !important;
@@ -27,27 +31,30 @@
   }
 
   &__about {
-    @apply flex justify-between items-center max-w-[144rem] px-[3.2rem];
+    //
+    @apply flex flex-col md:flex-row w-full md:justify-between md:items-center md:max-w-[144rem] px-[3.2rem];
+    //
     margin: 0 auto;
+    //
     & main {
-      @apply text-white w-[37%];
+      @apply md:w-[37%];
 
       & span {
         @apply text-[1.4rem] text-[#FF9900] uppercase;
       }
 
       & h2 {
-        @apply mb-[.8rem] text-[5rem];
+        @apply mb-[.8rem] md:text-[5rem] text-white;
       }
 
       & p {
-        @apply mb-[4rem] text-[2.1rem];
+        @apply md:mb-[4rem] text-[1.8rem] md:text-[2.1rem] text-white;
       }
     }
     & section {
-      @apply w-1/2;
+      @apply md:w-1/2;
       & figure {
-        @apply relative top-[7.2rem];
+        @apply relative top-[9.6rem] md:top-[7.2rem];
         & img {
           height: 100% !important;
           width: 100% !important;
@@ -67,10 +74,11 @@
       }
 
       & form {
-        @apply flex justify-center gap-x-[1.6rem] bg-white py-[5.6rem] px-[6.4rem] rounded-[1rem] relative top-[10.4rem];
+        @apply flex justify-between gap-x-[2%] bg-white py-[5.6rem] px-[6.4rem] rounded-[1rem] relative top-[10.4rem];
         box-shadow: 0px 4px 8px rgba(181, 181, 181, 0.1);
-        & button {
-          @apply px-[6.4rem];
+
+        & > * {
+          width: 23%;
         }
       }
     }
@@ -87,13 +95,16 @@
       }
 
       & main {
-        @apply flex justify-between items-center gap-x-[1.6rem] w-full px-[12.5rem] bg-white py-[4rem] rounded-[1rem] relative top-[16rem] overflow-hidden;
+        @apply flex justify-between items-center w-full bg-white px-[12rem] py-[4rem] rounded-[1rem] relative top-[16rem] overflow-hidden;
         box-shadow: 0px 4px 8px rgba(181, 181, 181, 0.1);
 
         & figure {
           @apply flex gap-x-[3.6rem] py-[1.6rem];
-          & svg {
-            @apply h-[6.4rem] w-[6.4rem] rounded-[100%] bg-[#FF9900]/5;
+          & div {
+            @apply h-[6.4rem] w-[6.4rem] rounded-full bg-[#FF9900]/5 flex items-center justify-center;
+            & svg {
+              @apply h-[3.2rem] w-[3.2rem] rounded-[100%] bg-[#FF9900]/5;
+            }
           }
 
           & figcaption {

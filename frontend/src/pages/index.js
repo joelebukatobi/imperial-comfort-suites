@@ -1,14 +1,15 @@
 // React
 import { useState } from 'react';
 // Next JS
-import Link from 'next/link';
 import Image from 'next/image';
 // Images
 import terrainImage from '@/images//terrain-image.png';
 // Components
-import Header from '@/global//layouts/Header';
 import Layout from '@/global//layouts/Layout';
 import Container from '@/global//layouts/Container';
+import Reviews from '@/global//components/Reviews';
+import Subscribe from '@/global//components/Subscribe';
+import Card from '@/global//components/Card';
 
 export default function Home() {
   return (
@@ -120,12 +121,19 @@ export default function Home() {
               <h2>Available Listings</h2>
               <p>
                 Ut pariatur enim et dolore voluptatem sed placeat omnis ut voluptatibus ratione quo quisquam tempora nam
-                amet assumenda est vero sint eos temporibus consequatur minus amet.{' '}
+                amet assumenda est vero sint eos temporibus consequatur minus amet
               </p>
             </header>
-            <main></main>
+            <main className="index__listings__row">
+              <Card />
+              <Card />
+              <Card />
+            </main>
           </section>
         </Container>
+
+        <Reviews />
+        <Subscribe />
       </div>
     </Layout>
   );

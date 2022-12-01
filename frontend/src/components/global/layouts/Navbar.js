@@ -16,12 +16,14 @@ export default function Navbar() {
   };
   return (
     <Container className={'max-width w-[100%]'}>
-      <nav className={open ? `h-[100vh] [w-100%]` : `py-[3.2rem] w-[100%]  flex items-center justify-between`}>
-        <Link href="/">
-          <img className="h-[4rem]" src="/images/icon-logo.png" alt="" />
-        </Link>
+      <nav className={open ? `h-[100vh] [w-100%]` : `py-[3.2rem] w-[100%]  md:flex items-center justify-between`}>
+        <div className="mb-[3.2rem] md:mb-0 ">
+          <Link href="/">
+            <img className="h-[4rem]" src="/images/icon-logo.png" alt="" />
+          </Link>
+        </div>
 
-        <div className="flex items-center gap-x-[8rem]">
+        <div className="flex flex-col gap-y-[2.4rem] md:gap-y-0 md:items-center md:flex-row md:gap-x-[8rem]">
           <ul>
             <Link href="/">
               <li>

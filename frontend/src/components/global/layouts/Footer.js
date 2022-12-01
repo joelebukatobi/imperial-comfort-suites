@@ -10,7 +10,7 @@ export default function Footer() {
           <section>
             <img src="/images/icon-footer-logo.png" alt="" />
             <div>
-              <p clas>
+              <p>
                 <strong>Phone:</strong> (682) 283-7869
               </p>
               <p>
@@ -27,7 +27,7 @@ export default function Footer() {
             </ul>
           </section>
           <section>
-            <h4>Quick Links</h4>
+            <h4>Newsletter</h4>
             <p>Subscribe to our weekly Newsletter and receive updates via email</p>
             <form action="">
               <Input placeholder={'Enter Email'} />

@@ -1,0 +1,50 @@
+.about {
+  & header {
+    & span {
+      @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+    }
+
+    & h2 {
+      @apply md:text-[3.7rem] my-[1.6rem] capitalize  text-center;
+    }
+
+    & p {
+      @apply text-[1.8rem] text-center;
+    }
+    & ul {
+      @apply flex justify-between mt-[5.6rem];
+      & li {
+        @apply flex gap-x-[1.6rem] items-center text-[#474747];
+        & div {
+          @apply h-[6.4rem] w-[6.4rem] bg-[#FF9900]/5 rounded-full flex items-center justify-center;
+          & svg {
+            @apply h-[3.2rem] w-[3.2rem];
+          }
+        }
+      }
+    }
+  }
+
+  &__listings {
+    //
+    @apply mt-[20.8rem] mb-[20.8rem];
+    //
+    & header {
+      @apply flex flex-col items-center justify-center mb-[8rem];
+
+      & p {
+        @apply md:w-[60%];
+      }
+    }
+    //
+    & main {
+      @apply border-l-[.8rem] border-[#FF9900] bg-[#FF9900]/5 p-[4rem] md:p-[5.6rem] md:w-[70%];
+      //
+      margin: 0 auto;
+      //
+      & p {
+        @apply text-[1.8rem];
+      }
+    }
+  }
+}

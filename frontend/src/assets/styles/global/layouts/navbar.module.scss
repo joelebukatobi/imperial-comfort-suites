@@ -1,6 +1,6 @@
 nav {
   ul {
-    @apply flex gap-x-[4rem] h-full;
+    @apply flex flex-col md:flex-row gap-y-[1.6rem] md:gap-y-[0] gap-x-[4rem] h-full;
     & li {
       @apply text-white font-semibold text-[1.4rem] flex flex-col gap-y-[.8rem] pt-[.8rem];
       & hr {

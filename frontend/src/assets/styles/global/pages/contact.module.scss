@@ -1,0 +1,24 @@
+.contact {
+  //
+  margin: 0 auto;
+  //
+  @apply w-[79.1%] mt-[20.8rem] mb-[8rem] flex gap-x-[10%] justify-between;
+
+  & header {
+    @apply w-[46%];
+    & span {
+      @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+    }
+
+    & h2 {
+      @apply text-[3.7rem] my-[1.6rem] capitalize;
+    }
+  }
+
+  & form {
+    @apply w-full;
+    & div {
+      @apply flex gap-x-[2.4rem] mb-[2.4rem];
+    }
+  }
+}

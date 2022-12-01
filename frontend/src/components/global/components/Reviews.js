@@ -47,14 +47,13 @@ export default function Reviews() {
           <Swiper
             loop={true}
             spaceBetween={20}
-            slidesPerView={2}
+            slidesPerView={1}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
             breakpoints={{
               576: {
                 slidesPerView: 1,
-                // spaceBetween: 30,
               },
 
               768: {

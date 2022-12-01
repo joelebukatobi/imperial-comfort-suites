@@ -62,7 +62,7 @@
     @apply mb-[8rem] md:mb-[20.8rem];
     //
     & header {
-      @apply flex flex-col items-center justify-center w-full;
+      @apply flex flex-col items-center justify-center w-full border-2;
     }
     //
     & main {

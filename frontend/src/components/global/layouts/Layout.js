@@ -23,7 +23,7 @@ export default function Layout({ children }) {
   const pathname = useRouter().pathname;
 
   return (
-    <>
+    <div className="global">
       <Header>
         {pathname === '/' && (
           <header className="header__home">
@@ -141,6 +141,6 @@ export default function Layout({ children }) {
       </Header>
       {children}
       <Footer />
-    </>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 // Components
 import Header from '@/global//layouts/Header';
 import Footer from '@/global//layouts/Footer';

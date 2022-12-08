@@ -19,7 +19,7 @@ export default function Navbar() {
       <nav
         className={
           open
-            ? `absolute z-[10] left-0 bg-black h-[100vh] w-full p-[3.2rem]`
+            ? `fixed z-[10] left-0 bg-black h-[100vh] w-full p-[3.2rem]`
             : `py-[3.2rem] w-[100%]  md:flex items-center justify-between`
         }
       >
@@ -28,8 +28,8 @@ export default function Navbar() {
             <img className="h-[4rem]" src="/images/icon-logo.png" alt="" />
           </Link>
 
-          <svg onClick={toggle} className="h-[3.2rem] w-[3.2rem] md:hidden">
-            <use href="/images/sprite.svg#icon-menu" />
+          <svg onClick={toggle} className="h-[3.2rem] w-[3.2rem] fill-white md:hidden">
+            <use href={!open ? `/images/sprite.svg#icon-menu` : `/images/sprite.svg#icon-close`} />
           </svg>
         </div>
 

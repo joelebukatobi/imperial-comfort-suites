@@ -1,18 +1,20 @@
-.subscribe {
-  @apply bg-black p-[3.2rem] md:mx-[3.2rem] md:px-[9.6rem] md:py-[12rem] flex flex-col md:flex-row justify-between md:items-center border-2 border-white mb-[8rem];
+#global {
+  .subscribe {
+    @apply bg-black p-[3.2rem] md:mx-[3.2rem] md:px-[9.6rem] md:py-[12rem] flex flex-col md:flex-row justify-between md:items-center border-2 border-white mb-[8rem];
 
-  & main {
-    @apply space-y-[1.6rem] mb-[5.6rem] md:mb-0;
-    & span {
-      @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
-    }
+    & main {
+      @apply space-y-[1.6rem] mb-[5.6rem] md:mb-0;
+      & span {
+        @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+      }
 
-    & h2 {
-      @apply text-[2.8rem] md:text-[3.7rem] md:w-2/3 text-white capitalize;
-    }
+      & h2 {
+        @apply text-[2.8rem] md:text-[3.7rem] md:w-2/3 text-white capitalize;
+      }
 
-    & button {
-      height: unset;
+      & button {
+        height: unset;
+      }
     }
   }
 }

@@ -23,7 +23,7 @@ export default function Layout({ children }) {
   const pathname = useRouter().pathname;
 
   return (
-    <div className="global">
+    <div id="global">
       <Header>
         {pathname === '/' && (
           <header className="header__home">

@@ -1,4 +1,4 @@
-.admin {
+#admin {
   .sidebar {
     @apply grid-cols-3 col-span-2 h-[89.6vh] px-[1.6rem] py-[1.6rem] border-r-[.1rem] border-black/10 flex flex-col justify-between;
     & ul {

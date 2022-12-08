@@ -1,16 +1,18 @@
-nav {
-  ul {
-    @apply flex flex-col md:flex-row gap-y-[1.6rem] md:gap-y-[0] gap-x-[4rem];
-    & li {
-      @apply font-semibold text-[2.1rem] md:text-[1.4rem] flex flex-col gap-y-[.8rem] pt-[.8rem];
-      & hr {
-        @apply hidden md:block h-[.2rem] outline-none w-full border-none bg-[#FF9900] invisible;
-      }
-
-      &:hover {
-        @apply mt-0;
+#global {
+  nav {
+    ul {
+      @apply flex flex-col md:flex-row gap-y-[1.6rem] md:gap-y-[0] gap-x-[4rem];
+      & li {
+        @apply font-semibold text-[2.1rem] md:text-[1.4rem] flex flex-col gap-y-[.8rem] pt-[.8rem];
         & hr {
-          @apply visible;
+          @apply hidden md:block h-[.2rem] outline-none w-full border-none bg-[#FF9900] invisible;
+        }
+
+        &:hover {
+          @apply mt-0;
+          & hr {
+            @apply visible;
+          }
         }
       }
     }

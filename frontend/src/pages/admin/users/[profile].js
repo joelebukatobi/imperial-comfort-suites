@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 // Components
 import Input from '@/admin//element/Input';
+import Select from '@/admin//element/Select';
 import Layout from '@/admin//layouts/Layout';
 import Loading from '@/admin//components/Loading';
 // Config & Helpers
@@ -14,34 +15,42 @@ import { parseCookies } from '@/helpers//index';
 import { ToastContainer, toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
-export default function Profile({ token, username }) {
+export default function Profile({ token, user, username }) {
   // Assigns Next JS useRouter to a variable
   const navigate = useRouter();
+  // State Management
   const { data, loading } = useSelector((state) => state.user);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [image, setImage] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState(user.first_name);
+  const [lastName, setLastName] = useState(user.last_name);
+  const [image, setImage] = useState();
+  const [role, setRole] = useState(user.role.id);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [content, setContent] = useState();
-  // const user = data;
-  console.log(data);
+  const [content, setContent] = useState(user.image);
   // handleChange
   const imageChange = (file) => {
     setImage(file[0]);
     setContent(file[0].name);
   };
 
+  // Role Options
+  const options = [
+    { value: '1', label: 'Admin' },
+    { value: '2', label: 'Editor' },
+    { value: '3', label: 'Author' },
+  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // FormData
     const body = new FormData();
+    // body.append('_method', 'put');
     body.append('first_name', firstName);
     body.append('last_name', lastName);
-    body.append('username', userName);
+    body.append('username', username);
     body.append('new_image', image);
+    body.append('role_id', role);
     body.append('email', email);
     body.append('password', password);
     body.append('password_confirmation', passwordConfirmation);
@@ -58,25 +67,25 @@ export default function Profile({ token, username }) {
     const data = await res.json();
 
     if (res.ok) {
-      toast.success('Saved: Post edited successfully');
+      toast.success('Updated: User updated successfully');
       setTimeout(() => {
         setContent();
-        navigate.push(`/admin/user/${data.user.username}`);
+        navigate.push(`/admin/users/${user.username}`);
       }, 5000);
     } else {
-      toast.error(`Error ${data.message}`);
+      toast.error(`Error: ${data.message}`);
     }
   };
 
   return (
     <Layout>
       {loading && <Loading />}
-      {data && (
+      {user && (
         <div className="w-1/2">
           <ToastContainer autoClose={4000} position="bottom-right" theme="colored" />
           <header className="flex flex-col ">
             <div className="flex items-center mb-[1.6rem]">
-              <h3 className="text-black/90 mr-[1.6rem]">Welcome {data.first_name}</h3>
+              <h3 className="text-black/90 mr-[1.6rem]">Welcome {user.first_name}</h3>
               <figcaption onClick={handleSubmit} className="tag">
                 <p>Save</p>
               </figcaption>
@@ -87,17 +96,27 @@ export default function Profile({ token, username }) {
                 <h5 className="text-black/70 hover:text-black">Dashboard &nbsp;</h5>
               </Link>
               <h5>&gt; &nbsp;</h5>
-              <Link href={`/admin/user/${data.username}`}>
+              {loading === false && user.role.id === '1' ? (
+                <>
+                  <Link href={`/admin/users`}>
+                    <h5 className=" text-black/70 hover:text-black">Users &nbsp;</h5>
+                  </Link>
+                  <h5>&gt; &nbsp;</h5>
+                </>
+              ) : (
+                ''
+              )}
+              <Link href={`/admin/users/${user.username}`}>
                 <h5 className=" text-black/70 hover:text-black">User &nbsp;</h5>
               </Link>
             </div>
           </header>
-          <form action="" className="mt-[4rem]" onSubmit={handleSubmit}>
+          <form className="mt-[4rem]" onSubmit={handleSubmit}>
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
               <Input
                 name={'first_name'}
                 label={'First Name'}
-                placeholder={`${data.first_name}`}
+                placeholder={`${user.first_name}`}
                 type={'text'}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -108,7 +127,7 @@ export default function Profile({ token, username }) {
               <Input
                 name={'last_name'}
                 label={'Last Name'}
-                placeholder={`${data.last_name}`}
+                placeholder={`${user.last_name}`}
                 type={'text'}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
@@ -119,16 +138,18 @@ export default function Profile({ token, username }) {
             </div>
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
               <Input
-                name={'username'}
-                label={'Username'}
-                placeholder={`${data.username}`}
-                type={'text'}
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                name={'email'}
+                label={'Email'}
+                placeholder={`${user.email}`}
+                type={'email'}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
                 classInput={'mt-[.8rem]'}
-              />{' '}
+              />
+            </div>
+            <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
               <Input
                 name={'new_image'}
                 label={'Profile Picture'}
@@ -139,21 +160,15 @@ export default function Profile({ token, username }) {
                 after={content || 'Upload an image'}
                 className={'mb-[2.4rem] '}
                 classInput={
-                  'mt-[.8rem] relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-5 after:flex after:items-center after:font-light after:text-[#b9bec7]'
+                  'mt-[.8rem] relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-5 after:flex after:items-center after:font-light after:text-black'
                 }
               />
+              {loading === false && user.role.id === 1 ? (
+                <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
+              ) : (
+                ''
+              )}
             </div>
-            <Input
-              name={'email'}
-              label={'Email'}
-              placeholder={`${data.email}`}
-              type={'email'}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem]'}
-            />
 
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
               <Input
@@ -186,9 +201,9 @@ export default function Profile({ token, username }) {
   );
 }
 
-export async function getServerSideProps({ req, query: { post } }) {
+export async function getServerSideProps({ req, query: { profile } }) {
   const { token } = parseCookies(req);
-  const res = await fetch(`${API_URL}/api/users/me`, {
+  const res = await fetch(`${API_URL}/api/users/${profile}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -196,11 +211,12 @@ export async function getServerSideProps({ req, query: { post } }) {
     },
   });
   const data = await res.json();
-  console.log(data);
+  console.log(data.user);
   return {
     props: {
       token,
-      username: data.user.username,
+      username: profile,
+      user: data.user,
     },
   };
 }

@@ -91,9 +91,9 @@
     margin: 0 auto;
 
     & section {
-      @apply md:flex md:flex-col md:items-center w-full md:w-[79.1%];
+      @apply w-full md:flex md:flex-col md:items-center w-full md:w-[79.1%];
       & h2 {
-        @apply text-white mt-[4rem] md:text-[5rem] text-center md:w-[52.5%];
+        @apply text-white mt-[4rem] w-full md:text-[5rem] text-center md:w-[52.5%];
       }
 
       & main {
@@ -121,10 +121,6 @@
             }
           }
         }
-
-        // & figure:nth-of-type(2) {
-        //   @apply self-start;
-        // }
 
         & hr {
           @apply h-[.16rem] w-[10.4rem] md:rotate-90 outline-none border-none bg-[#D9D9D9] ml-[8rem];

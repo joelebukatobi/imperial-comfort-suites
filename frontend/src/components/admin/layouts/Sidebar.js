@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from '@/features///user/userActions';
 
 export default function Sidebar() {
-  const pathname = useRouter().pathname;
-  const navigate = useRouter().push;
+  // State
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   // Logout Dispatch
   const logout = () => {
@@ -17,7 +17,17 @@ export default function Sidebar() {
       .unwrap()
       .then(() => navigate('/admin'));
   };
-  const { data } = useSelector((state) => state.user);
+  // Initialize Data
+  const { data, loading } = useSelector((state) => state.user);
+  console.log(data);
+  // Route
+  const pathname = useRouter().pathname;
+  const navigate = useRouter().push;
+
+  // Toggle Menu
+  const toggle = () => {
+    setOpen(!open);
+  };
 
   return (
     <div className="sidebar">
@@ -212,55 +222,123 @@ export default function Sidebar() {
               />
             </svg>
           </li>
-          <li
-            className={`
-            ${pathname === '/user' || pathname.includes('user') ? ' text-black font-bold' : 'text-black/70'}`}
-          >
-            <div className="flex items-center">
-              <div className="h-[2rem]">
-                <svg
-                  className={`${
-                    pathname === '/user' || pathname.includes('user') ? ' stroke-black' : 'stroke-black/70'
-                  }`}
-                  viewBox="0 0 24 24"
-                  fill=""
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
-                    stroke=""
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
-                    stroke=""
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <Link href={`/admin/user/${data.username}`}>Profile</Link>
-            </div>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="hidden"
+          {loading === false && data.role.id === 1 ? (
+            <li
+              className={`${
+                pathname === '/users' || pathname.includes('users') ? ' text-black font-bold ' : 'text-black/70'
+              } no-highlight`}
+              onClick={toggle}
             >
-              <path
-                d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
-                stroke=""
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </li>
+              <div className="flex items-center">
+                <div className="h-[2rem]">
+                  <svg
+                    className={`${
+                      pathname === '/user' || pathname.includes('user') ? ' stroke-black' : 'stroke-black/70'
+                    }`}
+                    viewBox="0 0 24 24"
+                    fill=""
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                      stroke=""
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                      stroke=""
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                {/* <Link href={`/admin/user`}>Profile</Link> */}
+                Users
+              </div>
+              <svg
+                className={`${
+                  open && (pathname === '/admin' || pathname === '/users' || pathname.includes('users'))
+                    ? ' stroke-black font-bold rotate-180'
+                    : 'stroke-black/70'
+                }`}
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
+                  stroke=""
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <ul className={open ? 'block no-highlight' : 'hidden'}>
+                <li>
+                  <Link href="/admin/users">All Users</Link>
+                </li>
+                <li>
+                  <Link href={`/admin/users/${data.username}`}>My Profile</Link>
+                </li>
+              </ul>
+            </li>
+          ) : (
+            <li
+              className={`${
+                pathname === '/users' || pathname.includes('users') ? ' text-black font-bold' : 'text-black/70'
+              }`}
+            >
+              <div className="flex items-center">
+                <div className="h-[2rem]">
+                  <svg
+                    className={`${
+                      pathname === '/users' || pathname.includes('users') ? ' stroke-black' : 'stroke-black/70'
+                    }`}
+                    viewBox="0 0 24 24"
+                    fill=""
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                      stroke=""
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                      stroke=""
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                <Link href={`/admin/users/${data.username}`}>Profile</Link>
+              </div>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="hidden"
+              >
+                <path
+                  d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
+                  stroke=""
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </li>
+          )}
         </ul>
       </div>
 

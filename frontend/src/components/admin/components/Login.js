@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '@/features//user/userActions';
 
 export default function Login() {
-  const navigate = useRouter().push;
+  const reload = useRouter().reload;
   const { loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ export default function Login() {
     dispatch(userLogin(data))
       .unwrap()
       .then(() => {
-        navigate('/admin');
+        reload('/admin');
       });
   };
 

@@ -39,7 +39,10 @@ export default function Navbar() {
       </div> */}
 
       <div className="nav_user">
-        <img src={`${API_URL}/storage/${data.image}`} alt="User's Image" />
+        <img
+          src={data.image === null ? `/images/user-placeholder.png` : `${API_URL}/storage/${data.image}`}
+          alt="User's Image"
+        />
         <div className="flex flex-col">
           <h5 className="font-semibold">Administrator</h5>
           <h6>{data.first_name + ' ' + data.last_name}</h6>

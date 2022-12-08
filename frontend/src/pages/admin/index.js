@@ -12,7 +12,7 @@ import { parseCookies } from '@/helpers//index';
 // External Libraries
 import moment from 'moment/moment';
 
-export default function index({ token, posts, categories, tags }) {
+export default function index({ posts, categories, tags }) {
   // State
   const [slug, setSlug] = useState('');
   const [open, setOpen] = useState(false);
@@ -61,11 +61,6 @@ export default function index({ token, posts, categories, tags }) {
                             <use href={`/images/sprite.svg#icon-post`} />
                           </svg>
                         </Link>
-                        <div onClick={(e) => (e.preventDefault(), setSlug(post.slug), setOpen(toggle))}>
-                          <svg className="hover:stroke-red-600">
-                            <use href={`/images/sprite.svg#icon-trash`} />
-                          </svg>
-                        </div>
                       </div>
                     </td>
                   </tr>
@@ -75,26 +70,22 @@ export default function index({ token, posts, categories, tags }) {
           </table>
         </div>
       </div>
-      <Modal open={open} close={setOpen} modal="posts" text={'post'} slug={slug} token={token} />
     </Layout>
   );
 }
 
 export async function getServerSideProps({ req }) {
-  const { token } = parseCookies(req);
+  // const { token } = parseCookies(req);
   const res = await Promise.all([
     fetch(`${API_URL}/api/posts`),
     fetch(`${API_URL}/api/categories`),
     fetch(`${API_URL}/api/tags`),
-    // fetch(`${API_URL}/api/users`),
   ]);
 
   const data = await Promise.all(res.map((res) => res.json()));
-  // console.log(data[0].posts);
 
   return {
     props: {
-      token,
       posts: data[0].posts,
       categories: data[1].categories,
       tags: data[2].tags,

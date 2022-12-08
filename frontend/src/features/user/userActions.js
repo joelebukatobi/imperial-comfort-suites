@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const registerUser = createAsyncThunk(
   'user/register',
-  async ({ name, email, password, password_confirmation }, { rejectWithValue }) => {
+  async ({ first_name, last_name, username, email, password, password_confirmation, role_id }, { rejectWithValue }) => {
     try {
       const res = await fetch(`/api/auth/register`, {
         method: 'POST',
@@ -10,7 +10,7 @@ export const registerUser = createAsyncThunk(
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
         },
-        body: JSON.stringify({ name, email, password, password_confirmation }),
+        body: JSON.stringify({ first_name, last_name, username, email, password, password_confirmation, role_id }),
       });
 
       const data = await res.json();

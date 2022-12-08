@@ -65,7 +65,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.data = payload;
       state.error = null;
-      state.success = true;
+      state.success = null;
     },
     [getUser.rejected]: (state, { payload }) => {
       state.loading = false;

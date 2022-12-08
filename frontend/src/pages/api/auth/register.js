@@ -3,7 +3,7 @@ import { API_URL } from '@/config//index';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
-    const { name, email, password, password_confirmation } = req.body;
+    const { first_name, last_name, username, email, password, password_confirmation, role_id } = req.body;
 
     const api = await fetch(`${API_URL}/api/register`, {
       method: 'POST',
@@ -11,10 +11,13 @@ export default async (req, res) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name,
+        first_name,
+        last_name,
+        username,
         email,
         password,
         password_confirmation,
+        role_id,
       }),
     });
 

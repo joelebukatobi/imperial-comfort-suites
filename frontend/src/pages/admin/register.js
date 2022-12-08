@@ -4,41 +4,60 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 // Components
 import Input from '@/admin//element/Input';
+import Select from '@/admin//element/Select';
 import Button from '@/admin//element/Button';
-// Redux Toolkit
+// External Libraries
+import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '@/features//user/userActions';
+//
 export default function Register() {
   const navigate = useRouter().push;
 
   const { error, success } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   useEffect(() => {
-    if (success) {
-      navigate('/admin/login');
+    if (success === true) {
+      // setContent(null);
+      toast.success(`Success: User created`);
+      setTimeout(() => {
+        navigate('/admin');
+      }, 5000);
     }
   }, [navigate, success]);
+
+  // Role Options
+  const options = [
+    { value: '1', label: 'Admin' },
+    { value: '2', label: 'Editor' },
+    { value: '3', label: 'Author' },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      name: name,
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
       email: email,
       password: password,
       password_confirmation: passwordConfirmation,
+      role_id: role,
     };
-    dispatch(registerUser(data))
-      .unwrap()
-      .then(() => navigate('/admin/login'));
+    dispatch(registerUser(data));
   };
   return (
     <div className="register">
+      <ToastContainer autoClose={4000} position="bottom-right" theme="colored" />
       <section>
         <header>
           <figure>
@@ -56,15 +75,26 @@ export default function Register() {
         </header>
         <p>To register an account kindly enter your credentials below</p>
         <form className="w-full" onSubmit={handleSubmit}>
-          <Input
-            placeholder={'Name'}
-            classButton={'top-[.8rem] invisible'}
-            label={'Name'}
-            classInput={'mt-[.8rem]'}
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div className="flex gap-x-[2.4rem] justify-between">
+            <Input
+              placeholder={'First Name'}
+              classButton={'top-[.8rem] invisible'}
+              label={'First Name'}
+              classInput={'mt-[.8rem]'}
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <Input
+              placeholder={'Last Name'}
+              classButton={'top-[.8rem] invisible'}
+              label={'Last Name'}
+              classInput={'mt-[.8rem]'}
+              required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
           <Input
             placeholder={'Email'}
             classButton={'top-[.8rem] invisible'}
@@ -74,24 +104,38 @@ export default function Register() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Input
-            placeholder={'Password'}
-            classButton={'top-[.8rem] invisible'}
-            label={'Password'}
-            classInput={'mt-[.8rem]'}
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />{' '}
-          <Input
-            placeholder={'Confirm Password'}
-            classButton={'top-[.8rem] invisible'}
-            label={'Confirm Password'}
-            classInput={'mt-[.8rem]'}
-            required
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
+          <div className="flex gap-x-[2.4rem] justify-between">
+            <Input
+              placeholder={'Username'}
+              classButton={'top-[.8rem] invisible'}
+              label={'Username'}
+              classInput={'mt-[.8rem]'}
+              required
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
+          </div>
+          <div className="flex gap-x-[2.4rem] justify-between">
+            <Input
+              placeholder={'Password'}
+              classButton={'top-[.8rem] invisible'}
+              label={'Password'}
+              classInput={'mt-[.8rem]'}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Input
+              placeholder={'Confirm Password'}
+              classButton={'top-[.8rem] invisible'}
+              label={'Confirm Password'}
+              classInput={'mt-[.8rem]'}
+              required
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
+          </div>
           <Button className={'mt-[.8rem]'}>Register</Button>
         </form>
       </section>

@@ -1,3 +1,5 @@
-.body {
-  @apply grid-cols-1 col-span-10 h-[89.6vh] p-[3.2rem] overflow-scroll;
+.admin {
+  .body {
+    @apply grid-cols-1 col-span-10 h-[89.6vh] p-[3.2rem] overflow-scroll;
+  }
 }

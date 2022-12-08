@@ -23,7 +23,7 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <div className="layout">
+    <div className="admin">
       {data ? (
         <>
           <Navbar />

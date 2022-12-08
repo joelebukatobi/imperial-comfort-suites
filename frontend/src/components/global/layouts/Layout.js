@@ -40,6 +40,17 @@ export default function Layout({ children }) {
               <figure>
                 <Image src={homeHeader} alt="loading" layout="fill" priority />
               </figure>
+              <main>
+                <div>
+                  <svg className=" ">
+                    <use href="/images/sprite.svg#icon-play" />
+                  </svg>
+                </div>
+                <div>
+                  <h4>Play this video</h4>
+                  <p>To know how it works</p>
+                </div>
+              </main>
             </section>
           </header>
         )}

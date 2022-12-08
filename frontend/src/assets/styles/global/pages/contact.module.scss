@@ -1,26 +1,28 @@
-.contact {
-  //
-  margin: 0 auto;
-  //
-  @apply md:w-[79.1%] mt-[20.8rem] mb-[8rem] flex flex-col md:flex-row gap-x-[10%] justify-between;
+#global {
+  .contact {
+    //
+    margin: 0 auto;
+    //
+    @apply md:w-[79.1%] mt-[20.8rem] mb-[8rem] flex flex-col md:flex-row gap-x-[10%] justify-between;
 
-  & header {
-    @apply md:w-[46%];
-    & span {
-      @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+    & header {
+      @apply md:w-[46%];
+      & span {
+        @apply text-[1.4rem] uppercase font-semibold text-[#FF9900];
+      }
+
+      & h2 {
+        @apply text-[3.7rem] my-[1.6rem] capitalize;
+      }
     }
 
-    & h2 {
-      @apply text-[3.7rem] my-[1.6rem] capitalize;
-    }
-  }
-
-  & form {
-    @apply w-full;
-    & div {
-      @apply flex flex-col md:flex-row gap-x-[2.4rem] md:mb-[2.4rem];
-      & > * {
-        @apply mb-[2.4rem] md:mb-0;
+    & form {
+      @apply w-full;
+      & div {
+        @apply flex flex-col md:flex-row gap-x-[2.4rem] md:mb-[2.4rem];
+        & > * {
+          @apply mb-[2.4rem] md:mb-0;
+        }
       }
     }
   }

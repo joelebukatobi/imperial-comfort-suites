@@ -39,7 +39,7 @@
           width: 100% !important;
         }
         & main {
-          @apply absolute pl-[3.2rem] md:pl-0 md:left-[3.2rem] bottom-[3.2rem] h-[7.2rem]  flex items-center gap-x-[1.6rem] w-full;
+          @apply absolute pl-[3.2rem] bottom-[3.2rem] h-[7.2rem]  flex items-center gap-x-[1.6rem] w-full;
 
           & div:nth-of-type(1) {
             @apply flex items-center justify-center fill-black bg-white rounded-full h-full w-[7.2rem];

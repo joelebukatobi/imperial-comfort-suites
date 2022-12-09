@@ -6,7 +6,6 @@ export default function Input({
   value,
   onChange,
   name,
-  svg,
   label,
   className,
   classLabel,

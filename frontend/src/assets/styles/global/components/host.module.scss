@@ -1,0 +1,32 @@
+#global {
+  .host {
+    @apply fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#080808]/50 z-[1000] flex items-center justify-center;
+
+    & form {
+      @apply bg-white w-full lg:w-3/5 xl:w-2/5 p-[1.6rem] mx-[3.2rem] md:mx-0 md:p-[3.2rem] relative;
+
+      & header {
+        @apply flex flex-col items-center mt-[4rem] mb-[3.2rem];
+
+        & p {
+          @apply text-center text-[1.4rem] md:text-[unset];
+        }
+      }
+      & input {
+        @apply mb-[1.6rem];
+      }
+
+      & svg {
+        @apply h-[2.4rem] w-[2.4rem] absolute top-[1.6rem] right-[1.6rem] md:top-[3.2rem] md:right-[3.2rem] fill-black cursor-pointer;
+      }
+
+      & textarea {
+        @apply lg:h-[16rem] xl:h-[24rem];
+      }
+
+      & button {
+        @apply w-full;
+      }
+    }
+  }
+}

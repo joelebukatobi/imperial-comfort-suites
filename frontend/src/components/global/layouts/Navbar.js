@@ -6,13 +6,19 @@ import { useRouter } from 'next/router';
 // Components
 import Container from '@/global//layouts/Container';
 import Button from '@/global//elements/Button';
+import Host from '@/global//components/Host';
 
 export default function Navbar() {
   // Assign next/router to a variable
   const pathname = useRouter().pathname;
   const [open, setOpen] = useState(false);
+  const [host, setHost] = useState(false);
   const toggle = () => {
     setOpen(!open);
+  };
+
+  const toggleHost = () => {
+    setHost(!host);
   };
   return (
     <Container className={'max-width w-[100%]'}>
@@ -62,9 +68,11 @@ export default function Navbar() {
               </li>
             </Link>
           </ul>
-          <Button>Become a Host</Button>
+          <Button onClick={toggleHost}>Become a Host</Button>
         </div>
       </nav>
+
+      <Host modal={host} closeModal={setHost} />
     </Container>
   );
 }

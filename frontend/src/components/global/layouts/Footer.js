@@ -14,7 +14,7 @@ export default function Footer() {
                 <strong>Phone:</strong> (682) 283-7869
               </p>
               <p>
-                <strong>Email:</strong> info@imperialcomfortsuite.com
+                <strong>Email:</strong> info@imperialcomfortsuites.com
               </p>
             </div>
           </section>

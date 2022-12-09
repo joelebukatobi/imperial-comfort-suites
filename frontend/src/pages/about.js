@@ -7,7 +7,7 @@ import Card from '@/global//components/Card';
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout pageTitle={'About | Imperial Comfort Suites'}>
       <div className="about">
         <Container>
           <section className="about__listings">

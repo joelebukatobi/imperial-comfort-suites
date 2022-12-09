@@ -11,7 +11,7 @@ import Subscribe from '@/global//components/Subscribe';
 
 export default function Listing() {
   return (
-    <Layout>
+    <Layout pageTitle={'Listing | Imperial Comfort Suites'}>
       <Container>
         <section className="listings">
           <Card />

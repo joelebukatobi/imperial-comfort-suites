@@ -17,7 +17,7 @@ export default function Contact() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   return (
-    <Layout>
+    <Layout pageTitle={'Contact | Imperial Comfort Suites'}>
       <Container>
         <section className="contact">
           <header>

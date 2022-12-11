@@ -22,6 +22,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
   const [maxPrice, setMaxPrice] = useState('');
   // Assign next/router to a variable
   const pathname = useRouter().pathname;
+  const navigate = useRouter().push;
 
   return (
     <>
@@ -53,7 +54,13 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                   Do you have a property in Dallas, Texas you’d like to rent? Imperial Comfort Suites is your bridge
                   between your property and people looking to rent.
                 </p>
-                <Button>Make an Enquiry</Button>
+                <Button
+                  onClick={() => {
+                    navigate('/contact');
+                  }}
+                >
+                  Make an Enquiry
+                </Button>
               </main>
               <section>
                 <figure>

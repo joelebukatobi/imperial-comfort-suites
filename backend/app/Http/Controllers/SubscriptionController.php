@@ -16,8 +16,15 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
+        
         //
-        return Subscription::all();
+        $subscription = Subscription::orderBy('created_at', 'asc')->get();
+        $response = [
+            'success' => true,
+            'subscriptions' => $subscription,
+        ];
+            
+        return response ($response, 200);
     }
 
      /**
@@ -44,7 +51,6 @@ class SubscriptionController extends Controller
             'success' => true,
             'message' => 'Subscription successful',
             'email' => $email, 
-            
         ];
 
         return response($response, 200);

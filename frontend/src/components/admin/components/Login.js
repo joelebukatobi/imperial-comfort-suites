@@ -55,6 +55,7 @@ export default function Login() {
             <p>To register an account kindly enter your credentials below</p>
             <form className="w-full" onSubmit={handleSubmit}>
               <Input
+                type={'email'}
                 placeholder={'Email'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Email'}
@@ -64,6 +65,7 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Input
+                type={'password'}
                 placeholder={'Password'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Password'}

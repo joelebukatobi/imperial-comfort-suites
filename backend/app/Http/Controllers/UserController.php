@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $this->authorize('create-delete-users');
+        // $this->authorize('create-delete-users');
         $users = User::with(['role'])->orderBy('created_at', 'asc')->get();
         $response = [
             'success' => true,
@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function register( Request $request) 
     { 
-        $this->authorize('create-delete-users');
+        // $this->authorize('create-delete-users');
         $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -143,7 +143,7 @@ class UserController extends Controller
     public function destroy($username)
     {
         //
-        $this->authorize('create-delete-users');
+        // $this->authorize('create-delete-users');
         $user = User::where(['username' => $username])->firstOrFail()->delete();
         $response = [
             'success' => true,

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Button from '@/global//elements/Button';
 import Input from '@/global//elements/Input';
 import Textarea from '@/global//elements/Textarea';
-
+//
 export default function Host({ modal, closeModal }) {
   // State
   const [name, setName] = useState('');
@@ -12,9 +12,31 @@ export default function Host({ modal, closeModal }) {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch(`/api/email/host`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+      }),
+    });
+
+    if (res.status === 200) {
+      // setOpen(true);
+      console.log('ok');
+    }
+  };
+
   return (
     <div className={modal ? 'host' : 'hidden'}>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <svg
           onClick={() => {
             closeModal(false);
@@ -27,35 +49,35 @@ export default function Host({ modal, closeModal }) {
           <h3>Become a Host</h3>
           <p>Enter your information below and I’ll reach out to discuss how we can work together!</p>
         </header>
-        <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
+        <div className="w-full flex justify-between gap-x-[1.6rem]">
           <Input
             name={'name'}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             type={'text'}
             required={'required'}
             placeholder={'Full Name'}
-          />{' '}
+          />
           <Input
-            name={'Email Address'}
-            onChange={(e) => setCity(e.target.value)}
+            name={'email'}
+            onChange={(e) => setEmail(e.target.value)}
             type={'email'}
             required={'required'}
             placeholder={'Email Address'}
           />
         </div>
-        <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
+        <div className="flex w-full">
           <Input
-            name={'Phone Number'}
-            onChange={(e) => setCity(e.target.value)}
+            name={'phone'}
+            onChange={(e) => setPhone(e.target.value)}
             type={'phone'}
             required={'required'}
             placeholder={'Phone'}
           />
         </div>
-        <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
+        <div className="flex w-full">
           <Textarea
             name={'message'}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
             required={'required'}
             placeholder={'Type Message'}
           />

@@ -21,7 +21,7 @@
           }
         }
         & ul {
-          @apply w-full order-last border-t-[.1rem] border-black/10 mt-[.8rem] pt-[.8rem] space-y-[.8rem];
+          @apply w-full order-last  mt-[.8rem] space-y-[.8rem];
           & li {
             @apply text-[1.4rem] block m-0 ml-[2.7rem] text-black/70 font-normal;
           }

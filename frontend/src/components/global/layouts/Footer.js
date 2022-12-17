@@ -1,8 +1,42 @@
+// Next JS
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 // Components
 import Container from '@/global//layouts/Container';
 import Input from '@/global//elements/Input';
 import Button from '@/global//elements/Button';
+// Config & Helpers
+import { API_URL } from '@/config/index';
+import { useState } from 'react';
 export default function Footer() {
+  // Router
+  const navigate = useRouter().push;
+  const pathname = useRouter().pathname;
+  // State
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Form Data
+    const body = new FormData();
+    body.append('email', email);
+
+    // Post Requests
+    const res = await fetch(`${API_URL}/api/subscriptions`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: body,
+    });
+    const data = await res.json();
+    if (data.success === true) {
+      setTimeout(() => {
+        navigate(`/${pathname}`);
+      }, 5000);
+    }
+  };
   return (
     <footer>
       <Container>
@@ -21,16 +55,28 @@ export default function Footer() {
           <section>
             <h4>Quick Links</h4>
             <ul>
-              <li>About</li>
-              <li>Listing</li>
-              <li>Contact Us</li>
+              <li>
+                <Link href="/about">About</Link>
+              </li>
+              <li>
+                <Link href="/listing">Listing</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact Us</Link>
+              </li>
             </ul>
           </section>
           <section>
             <h4>Newsletter</h4>
             <p>Subscribe to our weekly Newsletter and receive updates via email</p>
-            <form action="">
-              <Input placeholder={'Enter Email'} />
+            <form onSubmit={handleSubmit}>
+              <Input
+                name={'email'}
+                onChange={(e) => setEmail(e.target.value)}
+                type={'email'}
+                required={'required'}
+                placeholder={'Enter Email'}
+              />
               <Button>Submit</Button>
             </form>
           </section>

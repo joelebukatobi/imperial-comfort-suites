@@ -19,7 +19,7 @@ export default function Profile({ token, user, username }) {
   // Assigns Next JS useRouter to a variable
   const navigate = useRouter();
   // State Management
-  const { data, loading } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
   const [firstName, setFirstName] = useState(user.first_name);
   const [lastName, setLastName] = useState(user.last_name);
   const [image, setImage] = useState();
@@ -164,8 +164,25 @@ export default function Profile({ token, user, username }) {
                 }
               />
               {loading === false && user.role.id === 1 ? (
-                <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
+                <div className="w-full">
+                  <label className="text-black/70" htmlFor="role">
+                    Role
+                  </label>
+                  <section className="!w-full border-[.16rem] !h-[4.8rem] border-[#ECECEC] rounded-[.4rem] mt-[.8rem] pr-[.8rem]">
+                    <select
+                      name="role"
+                      className="w-full h-full bg-white outline-none rounded-[.4rem] pl-[.8rem] mb-0"
+                      required
+                      onChange={(e) => setRole(e.target.value)}
+                    >
+                      <option value={1}>Admin</option>
+                      <option value={2}>Editor</option>
+                      <option value={3}>Author</option>
+                    </select>
+                  </section>
+                </div>
               ) : (
+                // <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
                 ''
               )}
             </div>
@@ -211,7 +228,6 @@ export async function getServerSideProps({ req, query: { profile } }) {
     },
   });
   const data = await res.json();
-  console.log(data.user);
   return {
     props: {
       token,

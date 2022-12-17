@@ -9,9 +9,10 @@ import Layout from '@/global//layouts/Layout';
 import Container from '@/global//layouts/Container';
 import Reviews from '@/global//components/Reviews';
 import Subscribe from '@/global//components/Subscribe';
-import Card from '@/global//components/Card';
+// Config\, Utils & Helpers
+import { API_URL } from '@/config/index';
 
-export default function Home() {
+export default function Home({ reviews, listings }) {
   return (
     <Layout>
       <div className="index">
@@ -125,16 +126,64 @@ export default function Home() {
               </p>
             </header>
             <main className="index__listings__row">
-              <Card />
-              <Card />
-              <Card />
+              {listings.slice(0, 3).map((listing) => (
+                <div className="card">
+                  <figure>
+                    <main>
+                      <img src={`${API_URL}/storage/${listing.image}`} alt="" />
+
+                      <div>
+                        <p>${listing.price}/Month</p>
+                        <span className="font-bold">Rent</span>
+                      </div>
+                    </main>
+                    <figcaption>
+                      <main>
+                        <h4>{listing.name}</h4>
+                        <p>{listing.address}</p>
+                      </main>
+                      <div>
+                        <p>{listing.bedrooms} Bedroom</p>
+                        <hr />
+                        <p>{listing.bathrooms} Bathrooms</p>
+                        <hr />
+                        <p>{listing.size}</p>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </div>
+              ))}
             </main>
           </section>
         </Container>
 
-        <Reviews />
+        <Reviews reviews={reviews} />
         <Subscribe />
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await Promise.all([
+    fetch(`${API_URL}/api/reviews`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }),
+    fetch(`${API_URL}/api/listings`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }),
+  ]);
+  const data = await Promise.all(res.map((res) => res.json()));
+  return {
+    props: {
+      reviews: data[0].reviews,
+      listings: data[1].listings,
+    },
+  };
 }

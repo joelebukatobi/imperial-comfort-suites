@@ -10,17 +10,16 @@ import Container from '@/global//layouts/Container';
 import Button from '@/global//elements/Button';
 // Config\, Utils & Helpers
 import { API_URL } from '@/config/index';
-import { reviews } from '@/utils//reviews';
 
 // External Libraries
 import { Swiper, SwiperSlide } from 'swiper/react';
-// const Swiper = dynamic(() => import('swiper/react'), { ssr: false });
-// const SwiperSlide = dynamic(() => import('swiper/react'), { ssr: false });
+import moment from 'moment/moment';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function Reviews() {
+export default function Reviews({ reviews }) {
+  // console.log(reviews);
   const swiperRef = useRef();
   return (
     <section className="index__reviews">
@@ -57,19 +56,19 @@ export default function Reviews() {
               },
             }}
           >
-            {reviews.map(({ id, review, stars }) => (
+            {reviews.map((review) => (
               <SwiperSlide>
                 <figure>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <Image src={terrainImage} alt="terrain" layout="fill" priority />
                       <aside>
-                        <h4>Mike Anderson</h4>
-                        <p>September, 2022</p>
+                        <h4>{review.name}</h4>
+                        <p>{moment(review.created_at).format('MMMM YYYY')}</p>
                       </aside>
                     </div>
                     <div className="flex">
-                      {[...new Array(stars)].map(() => {
+                      {[...new Array(review.stars)].map(() => {
                         return (
                           <svg className="h-[1.2rem] w-[1.2rem] md:h-[1.75rem] md:w-[1.64rem]">
                             <use href="/images/sprite.svg#icon-star" />
@@ -79,7 +78,7 @@ export default function Reviews() {
                     </div>
                   </div>
                   <figcaption>
-                    <p>{review.substring(0, 100)}...</p>
+                    <p>{review.review.substring(0, 100)}...</p>
                   </figcaption>
                 </figure>
               </SwiperSlide>

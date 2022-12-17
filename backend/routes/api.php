@@ -4,8 +4,9 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Routes
 // ------------------------------------------------------------------------
-
+// ------------------------------------------------------------------------
 // User 
 Route::post('/register', [AuthController::class, 'register']); // Remember to delete in production!!!
  // Authentication
@@ -41,7 +42,14 @@ Route::get('/tags/{slug}', [TagController::class, 'show']);
 // Posts
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{slug}', [PostController::class, 'show']);
+// Listings
+Route::get('/listings', [ListingController::class, 'index']);
+Route::get('/listings/{slug}', [ListingController::class, 'show']);
+// Reviews
+Route::get('/reviews', [ReviewsController::class, 'index']);
+Route::get('/reviews/{slug}', [ReviewsController::class, 'show']);
 // Subscription
+Route::get('/subscriptions', [SubscriptionController::class, 'index']);
 Route::post('/subscriptions', [SubscriptionController::class, 'store']);
 
 
@@ -70,10 +78,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/posts/{slug}', [PostController::class, 'update']);
     Route::delete('/posts/{slug}', [PostController::class, 'destroy']);
     // Subscription
-    Route::get('/subscriptions', [SubscriptionController::class, 'index']);
     Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy']);
-});
+    // Listings
+    Route::post('/listings', [ListingController::class, 'store']);
+    Route::post('/listings/{slug}', [ListingController::class, 'update']);
+    Route::delete('/listings/{slug}', [ListingController::class, 'destroy']);
+    // Reviews
+    Route::get('/reviews/{slug}', [ReviewsController::class, 'show']);
+    Route::post('/reviews', [ReviewsController::class, 'store']);
+    Route::post('/reviews/{slug}', [ReviewsController::class, 'update']);
+    Route::delete('/reviews/{slug}', [ReviewsController::class, 'destroy']);
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+});

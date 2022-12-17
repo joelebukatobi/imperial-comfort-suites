@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -8,21 +8,24 @@ import Head from 'next/head';
 import Header from '@/global//layouts/Header';
 import Footer from '@/global//layouts/Footer';
 import Button from '@/global//elements/Button';
-import Input from '@/global//elements/Input';
-import Select from '@/global//elements/Select';
+import Video from '@/global//components/Video';
 // Images
 import homeHeader from '@/images//home-header.png';
 import aboutHeader from '@/images//about-image.png';
+// Config\, Utils & Helpers
+import { API_URL } from '@/config/index';
 
 export default function Layout({ children, pageTitle, description, keywords }) {
   //
-  const [city, setCity] = useState('Dallas');
-  const [bedrooms, setBedroom] = useState('');
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+
+  const [videoModal, setVideoModal] = useState(false);
   // Assign next/router to a variable
   const pathname = useRouter().pathname;
   const navigate = useRouter().push;
+
+  const toggleVideoModal = () => {
+    setVideoModal(!videoModal);
+  };
 
   return (
     <>
@@ -30,7 +33,6 @@ export default function Layout({ children, pageTitle, description, keywords }) {
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
-        {/* <meta property="og:url" content={url ? `https://joelebukatobi.dev/${url}` : `https://joelebukatobi.dev`} /> */}
         <meta property="og:type" content="website" />
         <meta name="robots" content="index,follow" />
         <meta property="og:image" content="/images/image-og.png" />
@@ -66,9 +68,9 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                 <figure>
                   <Image src={homeHeader} alt="loading" layout="fill" priority />
                 </figure>
-                <main>
+                <main onClick={toggleVideoModal}>
                   <div>
-                    <svg className=" ">
+                    <svg>
                       <use href="/images/sprite.svg#icon-play" />
                     </svg>
                   </div>
@@ -97,50 +99,6 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                 <figure>
                   <Image src={aboutHeader} alt="loading" layout="fill" priority />
                 </figure>
-              </section>
-            </header>
-          )}
-          {pathname === '/listing' && (
-            <header className="header__listing">
-              <section>
-                <h2>Find your next home for your vacation</h2>
-                <form>
-                  <Input
-                    value={city}
-                    name={'city'}
-                    onChange={(e) => setCity(e.target.value)}
-                    type={'text'}
-                    required={'required'}
-                    placeholder={'City'}
-                    disabled={'disabled'}
-                  />
-                  <Select>
-                    <option value="">Bedrooms</option>
-                    <option value={1}>1 Bedroom</option>
-                    <option value={2}>2 Bedroom</option>
-                    <option value={3}>3 Bedroom</option>
-                    <option value={4}>4 Bedroom</option>
-                  </Select>
-                  <div className="md:!w-3/5 flex gap-x-[8%]">
-                    <Input
-                      value={minPrice}
-                      name={'minPrice'}
-                      onChange={(e) => setMinPrice(e.target.value)}
-                      type={'number'}
-                      required={'required'}
-                      placeholder={'Min Price'}
-                    />
-                    <Input
-                      value={maxPrice}
-                      name={'maxPrice'}
-                      onChange={(e) => setMaxPrice(e.target.value)}
-                      type={'number'}
-                      required={'required'}
-                      placeholder={'Max Price'}
-                    />
-                  </div>
-                  <Button>Show</Button>
-                </form>
               </section>
             </header>
           )}
@@ -179,6 +137,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
         </Header>
         {children}
         <Footer />
+        <Video modal={videoModal} closeModal={setVideoModal} />
       </div>
     </>
   );

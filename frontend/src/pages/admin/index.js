@@ -12,7 +12,7 @@ import { parseCookies } from '@/helpers//index';
 // External Libraries
 import moment from 'moment/moment';
 
-export default function index({ posts, categories, tags }) {
+export default function index({ posts, categories, tags, subscriptions }) {
   // State
   const [slug, setSlug] = useState('');
   const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function index({ posts, categories, tags }) {
         <Card caption={'posts'} total={`${posts.length}`} svg={'icon-post'} />
         <Card caption={'tags'} total={`${tags.length}`} svg={'icon-tag'} />
         <Card caption={'categories'} total={`${categories.length}`} svg={'icon-category'} />
-        <Card caption={'users'} total={'2'} svg={'icon-user'} />
+        <Card caption={'subscriptions'} total={`${subscriptions.length}`} svg={'icon-user'} />
       </div>
       <div className="mt-[4rem]">
         <div className=" border-[.1rem] border-black/10 rounded-[.8rem]">
@@ -74,12 +74,12 @@ export default function index({ posts, categories, tags }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
-  // const { token } = parseCookies(req);
+export async function getServerSideProps() {
   const res = await Promise.all([
     fetch(`${API_URL}/api/posts`),
     fetch(`${API_URL}/api/categories`),
     fetch(`${API_URL}/api/tags`),
+    fetch(`${API_URL}/api/subscriptions`),
   ]);
 
   const data = await Promise.all(res.map((res) => res.json()));
@@ -89,6 +89,7 @@ export async function getServerSideProps({ req }) {
       posts: data[0].posts,
       categories: data[1].categories,
       tags: data[2].tags,
+      subscriptions: data[3].subscriptions,
     },
   };
 }

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from '@/features///user/userActions';
 
-export default function Sidebar() {
+export default function Sidebar({ user }) {
   // State
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -17,12 +17,11 @@ export default function Sidebar() {
       .unwrap()
       .then(() => navigate('/admin'));
   };
-  // Initialize Data
-  const { data, loading } = useSelector((state) => state.user);
-  console.log(data);
   // Route
   const pathname = useRouter().pathname;
   const navigate = useRouter().push;
+
+  console.log(user);
 
   // Toggle Menu
   const toggle = () => {
@@ -222,7 +221,137 @@ export default function Sidebar() {
               />
             </svg>
           </li>
-          {loading === false && data.role.id === 1 ? (
+          <li
+            className={`
+            ${
+              pathname === '/admin/subscriptions' || pathname.includes('subscriptions')
+                ? ' text-black font-bold'
+                : 'text-black/70'
+            }`}
+          >
+            <div className="flex items-center">
+              <div className="h-[2rem]">
+                <svg
+                  className={`${
+                    pathname === '/admin/subscriptions' || pathname.includes('subscriptions')
+                      ? '!fill-black'
+                      : '!fill-black/70'
+                  }`}
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.95 22L11.7 17.75L13.1 16.35L15.95 19.2L21.6 13.55L23 14.95L15.95 22ZM12 11L20 6H4L12 11ZM12 13L4 8V18H9.15L11.15 20H4C3.45 20 2.97933 19.8043 2.588 19.413C2.196 19.021 2 18.55 2 18V6C2 5.45 2.196 4.97933 2.588 4.588C2.97933 4.196 3.45 4 4 4H20C20.55 4 21.021 4.196 21.413 4.588C21.8043 4.97933 22 5.45 22 6V10.35L20 12.35V8L12 13Z"
+                    fill=""
+                  />
+                </svg>
+              </div>
+              <Link href="/admin/subscriptions">Subscriptions</Link>
+            </div>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="hidden"
+            >
+              <path
+                d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
+                stroke=""
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </li>
+          <li
+            className={`
+            ${
+              pathname === '/admin/listings' || pathname.includes('listings')
+                ? ' text-black font-bold'
+                : 'text-black/70'
+            }`}
+          >
+            <div className="flex items-center">
+              <div className="h-[2rem]">
+                <svg
+                  className={`${
+                    pathname === '/admin/listings' || pathname.includes('listings') ? ' !fill-black' : '!fill-black/70'
+                  }`}
+                  viewBox="0 0 24 24"
+                  fill=""
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 19.5C4.08333 19.5 3.72933 19.354 3.438 19.062C3.146 18.7707 3 18.4167 3 18C3 17.5833 3.146 17.2293 3.438 16.938C3.72933 16.646 4.08333 16.5 4.5 16.5C4.91667 16.5 5.27067 16.646 5.562 16.938C5.854 17.2293 6 17.5833 6 18C6 18.4167 5.854 18.7707 5.562 19.062C5.27067 19.354 4.91667 19.5 4.5 19.5ZM8 19V17H21V19H8ZM4.5 13.5C4.08333 13.5 3.72933 13.354 3.438 13.062C3.146 12.7707 3 12.4167 3 12C3 11.5833 3.146 11.2293 3.438 10.938C3.72933 10.646 4.08333 10.5 4.5 10.5C4.91667 10.5 5.27067 10.646 5.562 10.938C5.854 11.2293 6 11.5833 6 12C6 12.4167 5.854 12.7707 5.562 13.062C5.27067 13.354 4.91667 13.5 4.5 13.5ZM8 13V11H21V13H8ZM4.5 7.5C4.08333 7.5 3.72933 7.354 3.438 7.062C3.146 6.77067 3 6.41667 3 6C3 5.58333 3.146 5.22933 3.438 4.938C3.72933 4.646 4.08333 4.5 4.5 4.5C4.91667 4.5 5.27067 4.646 5.562 4.938C5.854 5.22933 6 5.58333 6 6C6 6.41667 5.854 6.77067 5.562 7.062C5.27067 7.354 4.91667 7.5 4.5 7.5ZM8 7V5H21V7H8Z"
+                    fill=""
+                  />
+                </svg>
+              </div>
+              <Link href="/admin/listings">Listings</Link>
+            </div>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="hidden"
+            >
+              <path
+                d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
+                stroke=""
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </li>
+          <li
+            className={`
+            ${
+              pathname === '/admin/reviews' || pathname.includes('reviews') ? ' text-black font-bold' : 'text-black/70'
+            }`}
+          >
+            <div className="flex items-center">
+              <div className="h-[2rem]">
+                <svg
+                  className={`${
+                    pathname === '/admin/reviews' || pathname.includes('reviews')
+                      ? ' !fill-black stroke-none'
+                      : '!fill-black/70 stroke-none'
+                  }`}
+                  viewBox="0 0 24 24"
+                  fill=""
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.55 13.975C11.6333 14.175 11.7833 14.275 12 14.275C12.2167 14.275 12.3667 14.175 12.45 13.975L13.55 11.55L15.975 10.45C16.175 10.3667 16.275 10.2167 16.275 10C16.275 9.78333 16.175 9.63333 15.975 9.55L13.55 8.45L12.45 6.025C12.3667 5.825 12.2167 5.725 12 5.725C11.7833 5.725 11.6333 5.825 11.55 6.025L10.45 8.45L8.025 9.55C7.825 9.63333 7.725 9.78333 7.725 10C7.725 10.2167 7.825 10.3667 8.025 10.45L10.45 11.55L11.55 13.975ZM2 19.575V4C2 3.45 2.196 2.979 2.588 2.587C2.97933 2.19567 3.45 2 4 2H20C20.55 2 21.021 2.19567 21.413 2.587C21.8043 2.979 22 3.45 22 4V16C22 16.55 21.8043 17.021 21.413 17.413C21.021 17.8043 20.55 18 20 18H6L3.7 20.3C3.38333 20.6167 3.02067 20.6873 2.612 20.512C2.204 20.3373 2 20.025 2 19.575ZM4 17.175L5.175 16H20V4H4V17.175ZM4 4V17.175V4Z"
+                    fill=""
+                  />
+                </svg>
+              </div>
+              <Link href="/admin/reviews">Reviews</Link>
+            </div>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="hidden"
+            >
+              <path
+                d="M6.19043 9.36914L12.1904 15.3691L18.1904 9.36914"
+                stroke=""
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </li>
+          {user && user.role.id === 1 ? (
             <li
               className={`${
                 pathname === '/users' || pathname.includes('users') ? ' text-black font-bold ' : 'text-black/70'
@@ -283,7 +412,7 @@ export default function Sidebar() {
                   <Link href="/admin/users">All Users</Link>
                 </li>
                 <li>
-                  <Link href={`/admin/users/${data.username}`}>My Profile</Link>
+                  <Link href={`/admin/users/${user.username}`}>My Profile</Link>{' '}
                 </li>
               </ul>
             </li>
@@ -319,7 +448,7 @@ export default function Sidebar() {
                     />
                   </svg>
                 </div>
-                <Link href={`/admin/users/${data.username}`}>Profile</Link>
+                <Link href={`/admin/users/${user.username}`}>Profile</Link>
               </div>
               <svg
                 width="16"

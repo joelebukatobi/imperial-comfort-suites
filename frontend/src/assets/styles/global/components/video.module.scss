@@ -1,0 +1,17 @@
+#global {
+  .video {
+    @apply fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#080808]/50 z-[1000] flex items-center justify-center px-[3.2rem] lg:px-[13.6rem];
+
+    & main {
+      @apply bg-white w-full relative px-[3.2rem] py-[6.4rem] lg:p-[8rem] flex items-center justify-center;
+
+      & svg {
+        @apply h-[2.4rem] w-[2.4rem] absolute top-[1.6rem] right-[1.6rem] md:top-[3.2rem] md:right-[3.2rem] fill-black cursor-pointer;
+      }
+
+      & video {
+        @apply md:h-[40rem];
+      }
+    }
+  }
+}

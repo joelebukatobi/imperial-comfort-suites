@@ -1,7 +1,5 @@
 // React
 import { useState } from 'react';
-// Next JS
-import Link from 'next/link';
 // Components
 import Layout from '@/global//layouts/Layout';
 import Container from '@/global//layouts/Container';
@@ -16,6 +14,29 @@ export default function Contact() {
   const [service, setService] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch(`/api/email/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        service: service,
+      }),
+    });
+
+    if (res.status === 200) {
+      // setOpen(true);
+      console.log('ok');
+    }
+  };
   return (
     <Layout pageTitle={'Contact | Imperial Comfort Suites'}>
       <Container>
@@ -24,7 +45,7 @@ export default function Contact() {
             <span>Getting in touch</span>
             <h2>Drop your message here</h2>
           </header>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <Input
                 name={'name'}
@@ -42,7 +63,7 @@ export default function Contact() {
               />
             </div>
             <div>
-              <Select>
+              <Select onChange={(e) => setService(e.target.value)}>
                 <option value="">Select Service Type</option>
                 <option value={1}>1 Bedroom</option>
                 <option value={2}>2 Bedroom</option>
@@ -57,7 +78,12 @@ export default function Contact() {
                 placeholder={'Phone Number'}
               />
             </div>
-            <Textarea placeholder={'Type Message'} />
+            <Textarea
+              name={'message'}
+              onChange={(e) => setMessage(e.target.value)}
+              required={'required'}
+              placeholder={'Message'}
+            />
             <Button className={'w-full'}>Send Message</Button>
           </form>
         </section>

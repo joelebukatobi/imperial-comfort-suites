@@ -13,7 +13,7 @@
       }
       //
       & main {
-        @apply w-full md:w-[37%];
+        @apply w-full md:w-[37%] cursor-pointer;
 
         & h1 {
           @apply text-white text-[3.7rem] mb-[1.6rem] md:text-[6.7rem];
@@ -122,7 +122,7 @@
       & section {
         @apply w-full md:flex md:flex-col md:items-center w-full md:w-[79.1%];
         & h2 {
-          @apply text-white mt-[4rem] w-full md:text-[5rem] text-center md:w-[52.5%];
+          @apply text-white mt-[4rem] w-full md:text-[5rem] text-center md:w-[52.5%] lg:w-full;
         }
 
         & main {

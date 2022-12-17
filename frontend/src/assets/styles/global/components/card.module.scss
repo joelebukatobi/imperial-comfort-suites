@@ -9,10 +9,23 @@
           @apply w-full;
         }
         & div {
-          @apply flex justify-between w-full px-[2.4rem] bottom-[2.4rem] absolute;
+          @apply flex justify-between w-full px-[2.4rem] bottom-[2.4rem] absolute z-[60];
           & span {
             @apply bg-[#ff9900] rounded-full text-[1.2rem] text-white px-[1.6rem] py-[.4rem];
           }
+          & p {
+            @apply text-white;
+          }
+        }
+
+        &::after {
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          content: '';
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 50;
         }
       }
 
@@ -25,6 +38,9 @@
           @apply pb-[2.4rem] border-b-[.16rem] border-[#F1F1F1];
           & p {
             @apply text-[#A7A6A6];
+          }
+          &::after {
+            position: relative;
           }
         }
 

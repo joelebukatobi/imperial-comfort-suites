@@ -98,7 +98,7 @@ export default function Post({ tags, categories, users, token }) {
         <ToastContainer autoClose={4000} position="bottom-right" theme="colored" />
         <header className="flex flex-col ">
           <div className="flex items-center mb-[1.6rem]">
-            <h3 className="text-black/90 mr-[1.6rem]">Article One</h3>
+            <h3 className="text-black/90 mr-[1.6rem]">Posts</h3>
             <figcaption onClick={handleSubmit} className="tag">
               <p>Publish</p>
             </figcaption>

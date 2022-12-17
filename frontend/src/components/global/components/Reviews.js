@@ -61,7 +61,8 @@ export default function Reviews({ reviews }) {
                 <figure>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <Image src={terrainImage} alt="terrain" layout="fill" priority />
+                      <img src={`${API_URL}/storage/${review.image}`} alt="" />
+                      {/* <Image src={} alt="terrain" layout="fill" priority /> */}
                       <aside>
                         <h4>{review.name}</h4>
                         <p>{moment(review.created_at).format('MMMM YYYY')}</p>

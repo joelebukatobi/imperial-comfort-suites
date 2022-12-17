@@ -120,7 +120,6 @@ export default function Listing({ listings }) {
                   <figure>
                     <main>
                       <img src={`${API_URL}/storage/${listing.image}`} alt="" />
-
                       <div>
                         <p>${listing.price}/Month</p>
                         <span className="font-bold">Rent</span>

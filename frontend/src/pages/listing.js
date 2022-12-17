@@ -124,7 +124,7 @@ export default function Listing({ listings }) {
                       <div>
                         <p>${listing.price}/Month</p>
                         <span className="font-bold">Rent</span>
-                
+                      </div>
                     </main>
                     <figcaption>
                       <main>
@@ -143,11 +143,9 @@ export default function Listing({ listings }) {
                 </div>
               ))
             ) : (
-              <>
-                <div className="w-full flex flex-col items-center justify-center">
-                  <p>No Results for Search Criteria</p>
-                </div>
-              </>
+              <div className="w-full flex flex-col items-center justify-center">
+                <p>No Results for Search Criteria</p>
+              </div>
             )}
           </main>
         </section>
@@ -173,4 +171,3 @@ export async function getServerSideProps() {
     },
   };
 }
-

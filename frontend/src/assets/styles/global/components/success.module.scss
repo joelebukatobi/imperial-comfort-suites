@@ -1,0 +1,19 @@
+#global {
+  .success {
+    @apply fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#080808]/50 z-[1000] flex items-center justify-center;
+
+    & main {
+      @apply flex flex-col items-center text-center bg-white px-[1.6rem] py-[4rem] space-y-[1.6rem] w-full md:w-1/4;
+      & p {
+        @apply w-3/4;
+      }
+      & a {
+        @apply text-[1.6rem] text-[#FF9900] font-bold;
+      }
+
+      & hr {
+        @apply w-1/3 h-[.16rem] border-none outline-none bg-[#FF9900];
+      }
+    }
+  }
+}

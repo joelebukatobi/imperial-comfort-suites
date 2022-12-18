@@ -7,13 +7,17 @@ import Input from '@/global//elements/Input';
 import Textarea from '@/global//elements/Textarea';
 import Button from '@/global//elements/Button';
 import Select from '@/global//elements/Select';
+import Success from '@/global//components/Success';
 
 export default function Contact() {
+  // Route
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [service, setService] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +37,7 @@ export default function Contact() {
     });
 
     if (res.status === 200) {
-      // setOpen(true);
-      console.log('ok');
+      setOpen(true);
     }
   };
   return (
@@ -87,7 +90,12 @@ export default function Contact() {
             <Button className={'w-full'}>Send Message</Button>
           </form>
         </section>
-      </Container>
+      </Container>{' '}
+      <Success
+        modal={open}
+        caption={'Message Sent'}
+        message={`Hi there we've gotten your email, we'll reach out ASAP!`}
+      />
     </Layout>
   );
 }

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Container from '@/global//layouts/Container';
 import Input from '@/global//elements/Input';
 import Button from '@/global//elements/Button';
+import Success from '@/global//components/Success';
 // Config & Helpers
 import { API_URL } from '@/config/index';
 import { useState } from 'react';
@@ -14,6 +15,7 @@ export default function Footer() {
   const pathname = useRouter().pathname;
   // State
   const [email, setEmail] = useState('');
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,9 +34,7 @@ export default function Footer() {
     });
     const data = await res.json();
     if (data.success === true) {
-      setTimeout(() => {
-        navigate(`/${pathname}`);
-      }, 5000);
+      setOpen(true);
     }
   };
   return (
@@ -85,6 +85,7 @@ export default function Footer() {
           <p>All Rights Reserved @ Imperial Comfort Suite 2022</p>
         </div>
       </Container>
+      <Success modal={open} caption={'Subscribed'} message={'Thank you for subscribing to our newsletter!'} />
     </footer>
   );
 }

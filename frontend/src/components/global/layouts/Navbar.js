@@ -20,6 +20,7 @@ export default function Navbar() {
   const toggleHost = () => {
     setHost(!host);
   };
+
   return (
     <Container className={'max-width w-[100%]'}>
       <nav

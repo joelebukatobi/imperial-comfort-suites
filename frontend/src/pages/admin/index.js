@@ -30,7 +30,7 @@ export default function index({ posts, categories, tags, reviews }) {
         <Card caption={'posts'} total={`${posts.length}`} svg={'icon-post'} />
         <Card caption={'tags'} total={`${tags.length}`} svg={'icon-tag'} />
         <Card caption={'categories'} total={`${categories.length}`} svg={'icon-category'} />
-        <Card caption={'reviews'} total={`${reviews.length}`} svg={'icon-user'} />
+        <Card caption={'reviews'} total={`${reviews.length}`} svg={'icon-review'} />
       </div>
       <div className="mt-[4rem]">
         <div className=" border-[.1rem] border-black/10 rounded-[.8rem]">

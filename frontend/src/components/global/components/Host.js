@@ -1,9 +1,11 @@
 // React
 import { useState } from 'react';
+// Next JS
 // Components
 import Button from '@/global//elements/Button';
 import Input from '@/global//elements/Input';
 import Textarea from '@/global//elements/Textarea';
+import Success from '@/global//components/Success';
 //
 export default function Host({ modal, closeModal }) {
   // State
@@ -11,6 +13,8 @@ export default function Host({ modal, closeModal }) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +33,7 @@ export default function Host({ modal, closeModal }) {
     });
 
     if (res.status === 200) {
-      // setOpen(true);
-      console.log('ok');
+      setOpen(true);
     }
   };
 
@@ -84,6 +87,12 @@ export default function Host({ modal, closeModal }) {
         </div>
         <Button>Send Message</Button>
       </form>
+
+      <Success
+        modal={open}
+        caption={'Host Application Sent'}
+        message={`Hi there we've gotten your application, we'll reach out ASAP!`}
+      />
     </div>
   );
 }

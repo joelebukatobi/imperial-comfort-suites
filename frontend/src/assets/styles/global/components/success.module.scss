@@ -3,7 +3,7 @@
     @apply fixed top-0 left-0 h-[100vh] w-[100vw] bg-[#080808]/50 z-[1000] flex items-center justify-center;
 
     & main {
-      @apply flex flex-col items-center text-center bg-white px-[1.6rem] py-[4rem] space-y-[1.6rem] w-full md:w-1/4;
+      @apply flex flex-col items-center text-center bg-white px-[1.6rem] py-[4rem] space-y-[1.6rem] w-full mx-[3.2rem] md:w-1/4 md:mx-0;
       & p {
         @apply w-3/4;
       }

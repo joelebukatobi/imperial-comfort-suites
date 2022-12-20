@@ -77,6 +77,7 @@ class ListingController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required',
+            'link' => 'required',
             'image' => 'required',
             'city' => 'required',
             'address' => 'required|string',
@@ -87,6 +88,7 @@ class ListingController extends Controller
         [  
             'name.required' => 'Please enter a name for this listing',
             'price.required' => 'Please enter a price for this listing',
+            'link.required' => 'Please enter a link for this listing',
             'image.required' => 'Please input an image for this listing',
             'city.required' => 'Please enter a city for this listing',
             'address.required' => 'Please enter an address for this listing',
@@ -106,6 +108,7 @@ class ListingController extends Controller
         $listing = Listing::create([
             'name' => $request->name,
             'price' => $request->price,
+            'link' => $request->link,
             'image' => $filename,
             'city' => $request->city,
             'address' => $request->address,
@@ -136,6 +139,7 @@ class ListingController extends Controller
         $request->validate([
             'name' => 'required|string',
             'price' => 'required',
+            'link' => 'required',
             'city' => 'required',
             'address' => 'required|string',
             'bedrooms' => 'required|string',
@@ -145,6 +149,7 @@ class ListingController extends Controller
         [  
             'name.required' => 'Please enter a name for this listing',
             'price.required' => 'Please enter a price for this listing',
+            'link.required' => 'Please enter a link for this listing',
             'city.required' => 'Please enter a city for this listing',
             'address.required' => 'Please enter an address for this listing',
             'bedrooms.required' => 'Please the number of bedrooms for this listing',

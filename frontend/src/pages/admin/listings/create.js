@@ -21,6 +21,7 @@ export default function Create({ token }) {
   // Store values gotten from form
   const [name, setName] = useState('');
   const [price, setPrice] = useState();
+  const [link, setLink] = useState();
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [bedrooms, setBedrooms] = useState('');
@@ -43,6 +44,7 @@ export default function Create({ token }) {
     const body = new FormData();
     body.append('name', name);
     body.append('price', price);
+    body.append('link', link);
     body.append('address', address);
     body.append('city', city);
     body.append('bedrooms', bedrooms);
@@ -107,6 +109,19 @@ export default function Create({ token }) {
               className={'mb-[2.4rem]'}
               classInput={'mt-[.8rem] capitalize'}
             />
+          </div>
+          <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
+            <Input
+              label={'AirBNB Link'}
+              placeholder={'Link'}
+              type={'text'}
+              value={link}
+              name={'link'}
+              onChange={(e) => setLink(e.target.value)}
+              required={'required'}
+              className={'mb-[2.4rem]'}
+              classInput={'mt-[.8rem]'}
+            />
             <Input
               label={'Image'}
               placeholder={'Thumbnail'}
@@ -121,7 +136,6 @@ export default function Create({ token }) {
               }
             />
           </div>
-
           <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
             <Input
               label={'Size'}

@@ -21,6 +21,7 @@ export default function Listing({ listing, token }) {
   // Store values gotten from form
   const [name, setName] = useState(listing.name);
   const [price, setPrice] = useState(listing.price);
+  const [link, setLink] = useState(listing.link);
   const [address, setAddress] = useState(listing.address);
   const [bedrooms, setBedrooms] = useState(listing.bedrooms);
   const [bathrooms, setBathrooms] = useState(listing.bathrooms);
@@ -42,6 +43,7 @@ export default function Listing({ listing, token }) {
     const body = new FormData();
     body.append('name', name);
     body.append('price', price);
+    body.append('link', link);
     body.append('address', address);
     body.append('bedrooms', bedrooms);
     body.append('bathrooms', bathrooms);
@@ -108,6 +110,19 @@ export default function Listing({ listing, token }) {
               value={name}
               name={'name'}
               onChange={(e) => setName(e.target.value)}
+              required={'required'}
+              className={'mb-[2.4rem]'}
+              classInput={'mt-[.8rem] capitalize'}
+            />
+          </div>
+          <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
+            <Input
+              label={'AirBNB Link'}
+              placeholder={'Link'}
+              type={'text'}
+              value={link}
+              name={'link'}
+              onChange={(e) => setLink(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
               classInput={'mt-[.8rem] capitalize'}

@@ -87,8 +87,8 @@ export default function Home({ reviews, listings }) {
               <h2>Our Main Focus</h2>
               <p>Implement world-class solutions and provide our customers with the best real estate services.</p>
             </header>
-            <main data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
-              <figure>
+            <main>
+              <figure data-aos="fade-right" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <div>
                   <svg>
                     <use href="/images/sprite.svg#icon-record" />
@@ -100,7 +100,7 @@ export default function Home({ reviews, listings }) {
                   visibility of your property to prospective renters.
                 </p>
               </figure>
-              <figure>
+              <figure data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <div>
                   <svg>
                     <use href="/images/sprite.svg#icon-rent" />
@@ -140,7 +140,9 @@ export default function Home({ reviews, listings }) {
 
                       <div>
                         <p>${listing.price}/Month</p>
-                        <span className="font-bold">Rent</span>
+                        <span className="font-bold">
+                          <a href={`${listing.link}`}>Rent</a>
+                        </span>
                       </div>
                     </main>
                     <figcaption>

@@ -40,13 +40,13 @@ export default function Listing({ listings }) {
       <div className="header">
         <header className="header__listing">
           <section>
-            <h2 data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+            <h2 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
               Find your next home for your vacation
             </h2>
             <form
               onSubmit={handleSubmit}
               data-aos="fade-up"
-              data-aos-duration="600"
+              data-aos-duration="800"
               data-aos-delay="100"
               data-aos-easing="ease-in-out"
             >
@@ -91,23 +91,25 @@ export default function Listing({ listings }) {
       </div>
       <Container>
         <section className="listings">
-          <main
-            className="listings__row"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="100"
-            data-aos-easing="ease-in-out"
-          >
+          <main className="listings__row">
             {newListings === null ? (
               listings.map((listing) => (
-                <div className="card">
+                <div
+                  className="card"
+                  data-aos="fade-up-right"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                  data-aos-easing="ease-in-out"
+                >
                   <figure>
                     <main>
                       <img src={`${API_URL}/storage/${listing.image}`} alt="" />
 
                       <div>
                         <p>${listing.price}/Month</p>
-                        <span className="font-bold">Rent</span>
+                        <span className="font-bold">
+                          <a href={`${listing.link}`}>Rent</a>
+                        </span>
                       </div>
                     </main>
                     <figcaption>

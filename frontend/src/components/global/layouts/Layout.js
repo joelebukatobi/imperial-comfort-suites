@@ -53,7 +53,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
         <Header>
           {pathname === '/' && (
             <header className="header__home">
-              <main data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+              <main data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <h1>Own.Rent.Earn</h1>
                 <p>
                   Do you have a property in Dallas, Texas you’d like to rent? Imperial Comfort Suites is your bridge
@@ -67,7 +67,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                   Make an Enquiry
                 </Button>
               </main>
-              <section data-aos="flip-right" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
+              <section data-aos="flip-right" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <figure>
                   <Image src={homeHeader} alt="loading" layout="fill" priority />
                 </figure>
@@ -87,7 +87,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
           )}
           {pathname === '/about' && (
             <header className="header__about">
-              <main data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+              <main data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <span>Trusted by thousands</span>
                 <h2>Rent with us, Live like Royalty.</h2>
                 <p>
@@ -98,7 +98,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                 </p>
               </main>
 
-              <section data-aos="flip-right" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
+              <section data-aos="flip-right" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <figure>
                   <Image src={aboutHeader} alt="loading" layout="fill" priority />
                 </figure>
@@ -108,10 +108,10 @@ export default function Layout({ children, pageTitle, description, keywords }) {
           {pathname === '/contact' && (
             <header className="header__contact">
               <section>
-                <h2 data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+                <h2 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                   Feel free to contact us
                 </h2>
-                <main data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
+                <main data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                   <figure>
                     <div>
                       <svg>

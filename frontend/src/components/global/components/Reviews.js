@@ -64,7 +64,7 @@ export default function Reviews({ reviews }) {
           >
             {reviews.map((review) => (
               <SwiperSlide>
-                <figure>
+                <figure data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <img src={`${API_URL}/storage/${review.image}`} alt="" />

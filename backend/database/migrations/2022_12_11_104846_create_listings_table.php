@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->string('link');
             $table->string('slug');
             $table->string('image');
             $table->string('city');

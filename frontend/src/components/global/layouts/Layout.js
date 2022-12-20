@@ -1,5 +1,5 @@
 // React
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -12,10 +12,13 @@ import Video from '@/global//components/Video';
 // Images
 import homeHeader from '@/images//home-header.png';
 import aboutHeader from '@/images//about-image.png';
-// Config\, Utils & Helpers
-import { API_URL } from '@/config/index';
+// External Libraries
+import AOS from 'aos';
 
 export default function Layout({ children, pageTitle, description, keywords }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   //
 
   const [videoModal, setVideoModal] = useState(false);
@@ -50,7 +53,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
         <Header>
           {pathname === '/' && (
             <header className="header__home">
-              <main>
+              <main data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <h1>Own.Rent.Earn</h1>
                 <p>
                   Do you have a property in Dallas, Texas you’d like to rent? Imperial Comfort Suites is your bridge
@@ -64,7 +67,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                   Make an Enquiry
                 </Button>
               </main>
-              <section>
+              <section data-aos="flip-right" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <figure>
                   <Image src={homeHeader} alt="loading" layout="fill" priority />
                 </figure>
@@ -84,7 +87,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
           )}
           {pathname === '/about' && (
             <header className="header__about">
-              <main>
+              <main data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <span>Trusted by thousands</span>
                 <h2>Rent with us, Live like Royalty.</h2>
                 <p>
@@ -95,7 +98,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                 </p>
               </main>
 
-              <section>
+              <section data-aos="flip-right" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <figure>
                   <Image src={aboutHeader} alt="loading" layout="fill" priority />
                 </figure>
@@ -105,8 +108,10 @@ export default function Layout({ children, pageTitle, description, keywords }) {
           {pathname === '/contact' && (
             <header className="header__contact">
               <section>
-                <h2>Feel free to contact us</h2>
-                <main>
+                <h2 data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+                  Feel free to contact us
+                </h2>
+                <main data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-in-out">
                   <figure>
                     <div>
                       <svg>
@@ -115,7 +120,7 @@ export default function Layout({ children, pageTitle, description, keywords }) {
                     </div>
                     <figcaption>
                       <h4>Email Address</h4>
-                      <p>info@imperialcomfortsuite.com</p>
+                      <p>info@imperialcomfortsuites.com</p>
                     </figcaption>
                   </figure>
                   <hr />

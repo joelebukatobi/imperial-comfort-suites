@@ -82,7 +82,7 @@ export default function Footer() {
           </section>
         </div>
         <div className="bottom">
-          <p>All Rights Reserved @ Imperial Comfort Suite 2022</p>
+          <p>All Rights Reserved @ Imperial Comfort Suite s2022</p>
         </div>
       </Container>
       <Success modal={open} caption={'Subscribed'} message={'Thank you for subscribing to our newsletter!'} />

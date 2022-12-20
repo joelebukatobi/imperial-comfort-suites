@@ -1,8 +1,5 @@
 // React
 import { useState } from 'react';
-// Next JS
-import Link from 'next/link';
-// Components
 
 import Card from '@/global//components/Card';
 import Container from '@/global//layouts/Container';
@@ -22,6 +19,7 @@ export default function Listing({ listings }) {
   const [maxPrice, setMaxPrice] = useState('');
   const [newListings, setNewListings] = useState(null);
   const handleSubmit = async (e) => {
+    //
     e.preventDefault();
 
     const res = await fetch(
@@ -42,8 +40,16 @@ export default function Listing({ listings }) {
       <div className="header">
         <header className="header__listing">
           <section>
-            <h2>Find your next home for your vacation</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" data-aos-easing="ease-in-out">
+              Find your next home for your vacation
+            </h2>
+            <form
+              onSubmit={handleSubmit}
+              data-aos="fade-up"
+              data-aos-duration="600"
+              data-aos-delay="100"
+              data-aos-easing="ease-in-out"
+            >
               <Input
                 value={city}
                 name={'city'}
@@ -85,7 +91,13 @@ export default function Listing({ listings }) {
       </div>
       <Container>
         <section className="listings">
-          <main className="listings__row">
+          <main
+            className="listings__row"
+            data-aos="fade-up"
+            data-aos-duration="1200"
+            data-aos-delay="100"
+            data-aos-easing="ease-in-out"
+          >
             {newListings === null ? (
               listings.map((listing) => (
                 <div className="card">

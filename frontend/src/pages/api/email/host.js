@@ -6,9 +6,15 @@ export default async function (req, res) {
   const { name, email, message, phone } = req.body;
   //
   const transporter = nodemailer.createTransport({
-    port: 2525,
-    host: 'smtp.mailtrap.io',
-    // secure: true,
+    port: 587,
+    host: 'smtp.office365.com',
+    secure: false,
+    requireTLS: true,
+    logger: true,
+    tls: {
+      ciphers: 'SSLv3',
+      rejectUnauthorized: false,
+    },
     auth: {
       user: SMTP_USERNAME,
       pass: SMTP_PASSWORD,
@@ -16,21 +22,20 @@ export default async function (req, res) {
   });
   //
   const mailData = {
-    from: `${email}`,
-    to: 'joelebuka@gmail.com',
+    from: 'support@imperialcomfortsuites.com',
+    to: 'support@imperialcomfortsuites.com',
     subject: `Message From ${name}`,
     text: message + ' | Sent from: ' + email,
     html: `<div>${message}</div><p>Sent from:
    ${email} | Phone No:${phone}</p>`,
   };
-  //
-  transporter.sendMail(mailData, (err, info) => {
-    if (err) {
-      console.log(err);
-      res.send('error' + JSON.stringify(err));
-    } else {
-      console.log(info);
-      res.send('success');
-    }
-  });
+
+  try {
+    await transporter.sendMail({
+      mailData,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || error.toString() });
+  }
+  return res.status(200).json({ error: '' });
 }

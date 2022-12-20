@@ -22,7 +22,13 @@ export default function Reviews({ reviews }) {
   // console.log(reviews);
   const swiperRef = useRef();
   return (
-    <section className="index__reviews">
+    <section
+      className="index__reviews"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+    >
       <Container className={'flex flex-col md:flex-row md:items-center md:justify-between relative'}>
         <header>
           <span>Client's Testimonials</span>

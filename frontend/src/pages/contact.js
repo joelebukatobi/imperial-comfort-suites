@@ -36,7 +36,7 @@ export default function Contact() {
       }),
     });
 
-    if (res.status === 200) {
+    if (res.success === true) {
       setOpen(true);
     }
   };
@@ -44,11 +44,17 @@ export default function Contact() {
     <Layout pageTitle={'Contact | Imperial Comfort Suites'}>
       <Container>
         <section className="contact">
-          <header>
+          <header data-aos="fade-right" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
             <span>Getting in touch</span>
             <h2>Drop your message here</h2>
           </header>
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="100"
+            data-aos-easing="ease-in-out"
+          >
             <div>
               <Input
                 name={'name'}

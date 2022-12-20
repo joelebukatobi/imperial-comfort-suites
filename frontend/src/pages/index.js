@@ -19,7 +19,7 @@ export default function Home({ reviews, listings }) {
         <Container>
           <section className="index__why">
             <main>
-              <header>
+              <header data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <span>Why Choose Us</span>
                 <h2>We know the terrain</h2>
                 <p>
@@ -27,7 +27,7 @@ export default function Home({ reviews, listings }) {
                   obtain the finest bids. We are well versed with the area, its people and the properties.
                 </p>
               </header>
-              <ul>
+              <ul data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <li>
                   <div>
                     <svg xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@ export default function Home({ reviews, listings }) {
                   Excellent track record
                 </li>
               </ul>
-              <ul>
+              <ul data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <li>
                   <div>
                     <svg>
@@ -75,19 +75,19 @@ export default function Home({ reviews, listings }) {
                 </li>
               </ul>
             </main>
-            <figure>
+            <figure data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
               <Image src={terrainImage} alt="terrain" layout="fill" priority />
             </figure>
           </section>
         </Container>
         <Container>
           <section className="index__services">
-            <header>
+            <header data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
               <span>Our Services</span>
               <h2>Our Main Focus</h2>
               <p>Implement world-class solutions and provide our customers with the best real estate services.</p>
             </header>
-            <main>
+            <main data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
               <figure>
                 <div>
                   <svg>
@@ -117,7 +117,7 @@ export default function Home({ reviews, listings }) {
         </Container>
         <Container>
           <section className="index__listings">
-            <header>
+            <header data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" data-aos-easing="ease-in-out">
               <span>Comfortable Homes</span>
               <h2>Available Listings</h2>
               <p>
@@ -127,7 +127,13 @@ export default function Home({ reviews, listings }) {
             </header>
             <main className="index__listings__row">
               {listings.slice(0, 3).map((listing) => (
-                <div className="card">
+                <div
+                  className="card"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                  data-aos-easing="ease-in-out"
+                >
                   <figure>
                     <main>
                       <img src={`${API_URL}/storage/${listing.image}`} alt="" />

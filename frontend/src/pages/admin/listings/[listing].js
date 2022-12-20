@@ -22,6 +22,7 @@ export default function Listing({ listing, token }) {
   const [name, setName] = useState(listing.name);
   const [price, setPrice] = useState(listing.price);
   const [link, setLink] = useState(listing.link);
+  const [city, setCity] = useState(listing.city);
   const [address, setAddress] = useState(listing.address);
   const [bedrooms, setBedrooms] = useState(listing.bedrooms);
   const [bathrooms, setBathrooms] = useState(listing.bathrooms);
@@ -43,6 +44,7 @@ export default function Listing({ listing, token }) {
     const body = new FormData();
     body.append('name', name);
     body.append('price', price);
+    body.append('city', city);
     body.append('link', link);
     body.append('address', address);
     body.append('bedrooms', bedrooms);
@@ -114,8 +116,6 @@ export default function Listing({ listing, token }) {
               className={'mb-[2.4rem]'}
               classInput={'mt-[.8rem] capitalize'}
             />
-          </div>
-          <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
             <Input
               label={'AirBNB Link'}
               placeholder={'Link'}
@@ -125,8 +125,21 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setLink(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
+              classInput={'mt-[.8rem]'}
+            />
+            <Input
+              label={'City'}
+              placeholder={'City'}
+              type={'text'}
+              value={city}
+              name={'city'}
+              onChange={(e) => setCity(e.target.value)}
+              required={'required'}
+              className={'mb-[2.4rem]'}
               classInput={'mt-[.8rem] capitalize'}
             />
+          </div>
+          <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
             <Input
               label={'Bedrooms'}
               placeholder={'Bedrooms'}

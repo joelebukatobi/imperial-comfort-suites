@@ -121,8 +121,8 @@ export default function Home({ reviews, listings }) {
               <span>Comfortable Homes</span>
               <h2>Available Listings</h2>
               <p>
-                Ut pariatur enim et dolore voluptatem sed placeat omnis ut voluptatibus ratione quo quisquam tempora nam
-                amet assumenda est vero sint eos temporibus consequatur minus amet
+                Find a House, Flat, Apartment, or Short-Let for Rent with our wide variety of listings. Let's help you
+                get started.
               </p>
             </header>
             <main className="index__listings__row">

@@ -149,7 +149,7 @@ export default function Listing({ listings }) {
                         <hr />
                         <p>{listing.bathrooms} Bathrooms</p>
                         <hr />
-                        <p>{listing.size} </p>
+                        <p>{listing.size}</p>
                       </div>
                     </figcaption>
                   </figure>

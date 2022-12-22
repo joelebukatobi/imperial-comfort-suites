@@ -133,6 +133,7 @@ export default function Home({ reviews, listings }) {
                   data-aos-duration="1000"
                   data-aos-delay="100"
                   data-aos-easing="ease-in-out"
+                  key={listing.id}
                 >
                   <figure>
                     <main>

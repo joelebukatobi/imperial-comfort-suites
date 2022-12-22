@@ -63,12 +63,11 @@ export default function Reviews({ reviews }) {
             }}
           >
             {reviews.map((review) => (
-              <SwiperSlide>
+              <SwiperSlide key={review.id}>
                 <figure data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <img src={`${API_URL}/storage/${review.image}`} alt="" />
-                      {/* <Image src={} alt="terrain" layout="fill" priority /> */}
                       <aside>
                         <h4>{review.name}</h4>
                         <p>{moment(review.created_at).format('MMMM YYYY')}</p>

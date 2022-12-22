@@ -69,7 +69,7 @@ export default function Navbar() {
               </li>
             </Link>
           </ul>
-          <Button onClick={toggleHost}>Become a Host</Button>
+          <Button onClick={toggleHost}>Become a Partner</Button>
         </div>
       </nav>
 

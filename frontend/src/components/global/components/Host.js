@@ -49,7 +49,7 @@ export default function Host({ modal, closeModal }) {
           <use href="/images/sprite.svg#icon-something" />
         </svg>
         <header>
-          <h3>Become a Host</h3>
+          <h3>Become a Partner</h3>
           <p>Enter your information below and I’ll reach out to discuss how we can work together!</p>
         </header>
         <div className="w-full flex justify-between gap-x-[1.6rem]">

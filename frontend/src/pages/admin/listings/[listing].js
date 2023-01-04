@@ -114,7 +114,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setName(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
             <Input
               label={'AirBNB Link'}
@@ -125,7 +125,6 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setLink(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem]'}
             />
             <Input
               label={'City'}
@@ -136,7 +135,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setCity(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
           </div>
           <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
@@ -149,7 +148,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setBedrooms(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
             <Input
               label={'Bathrooms'}
@@ -160,7 +159,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setBathrooms(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
             <Input
               label={'Price'}
@@ -171,7 +170,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setPrice(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
           </div>
           <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
@@ -184,7 +183,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setAddress(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
             <Input
               label={'Size'}
@@ -195,7 +194,7 @@ export default function Listing({ listing, token }) {
               onChange={(e) => setSize(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'] capitalize'}
             />
             <Input
               label={'Image'}
@@ -204,11 +203,8 @@ export default function Listing({ listing, token }) {
               type={'file'}
               onChange={(e) => imageChange(e.target.files)}
               required={'required'}
-              after={content}
+              after={content.substring(0, 30)}
               className={'mb-[2.4rem] '}
-              classInput={
-                'mt-[.8rem] relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-10 after:flex after:items-center after:font-light after:text-[#b9bec7]'
-              }
             />
           </div>
         </form>

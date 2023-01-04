@@ -21,7 +21,7 @@ export default function Register() {
   const [lastName, setLastName] = useState('');
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState(1);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
@@ -34,13 +34,6 @@ export default function Register() {
       }, 5000);
     }
   }, [navigate, success]);
-
-  // Role Options
-  const options = [
-    { value: '1', label: 'Admin' },
-    { value: '2', label: 'Editor' },
-    { value: '3', label: 'Author' },
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +75,6 @@ export default function Register() {
                 placeholder={'First Name'}
                 classButton={'top-[.8rem] invisible'}
                 label={'First Name'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -92,51 +84,40 @@ export default function Register() {
                 placeholder={'Last Name'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Last Name'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-            <Input
-              type={'email'}
-              placeholder={'Email'}
-              classButton={'top-[.8rem] invisible'}
-              label={'Email'}
-              classInput={'mt-[.8rem]'}
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
             <div className="flex gap-x-[2.4rem] justify-between">
+              <Input
+                type={'email'}
+                placeholder={'Email'}
+                classButton={'top-[.8rem] invisible'}
+                label={'Email'}
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <Input
                 type={'text'}
                 placeholder={'Username'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Username'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <div className="w-full">
-                <label className="text-black/70" htmlFor="role">
-                  Role
-                </label>
-                <section className="!w-full border-[.16rem] !h-[4.8rem] border-[#ECECEC] rounded-[.4rem] mt-[.8rem] pr-[.8rem]">
-                  <select
-                    name="role"
-                    className="w-full bg-white outline-none rounded-[.4rem] pl-[.8rem] mb-0"
-                    required
-                    onChange={(e) => setRole(e.target.value)}
-                  >
-                    <option value={1}>Admin</option>
-                    <option value={2}>Editor</option>
-                    <option value={3}>Author</option>
-                  </select>
-                </section>
-              </div>
-              {/* <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} /> */}
+              <Input
+                type={'text'}
+                placeholder={'Role '}
+                classButton={'top-[.8rem] invisible'}
+                label={'Role'}
+                required
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className={'hidden'}
+              />
             </div>
             <div className="flex gap-x-[2.4rem] justify-between">
               <Input
@@ -144,7 +125,6 @@ export default function Register() {
                 placeholder={'Password'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Password'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -154,7 +134,6 @@ export default function Register() {
                 placeholder={'Confirm Password'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Confirm Password'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}

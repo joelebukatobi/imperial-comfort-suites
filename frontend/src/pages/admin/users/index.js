@@ -10,7 +10,6 @@ import Modal from '@/admin//components/Modal';
 import { API_URL } from '@/config/index';
 import { parseCookies } from '@/helpers//index';
 // External Libraries
-import moment from 'moment/moment';
 import { useDispatch } from 'react-redux';
 import { getUser } from '@/features//user/userActions';
 

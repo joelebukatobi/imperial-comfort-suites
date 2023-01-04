@@ -59,7 +59,6 @@ export default function Login() {
                 placeholder={'Email'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Email'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -69,7 +68,6 @@ export default function Login() {
                 placeholder={'Password'}
                 classButton={'top-[.8rem] invisible'}
                 label={'Password'}
-                classInput={'mt-[.8rem]'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

@@ -5,23 +5,21 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 // Redux Toolkit
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogout } from '@/features///user/userActions';
+import { userLogout } from '@/features//user/userActions';
 
 export default function Sidebar({ user }) {
   // State
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
+  //
+  const pathname = useRouter().pathname;
+  const navigate = useRouter().push;
   // Logout Dispatch
+  const dispatch = useDispatch();
   const logout = () => {
     dispatch(userLogout())
       .unwrap()
-      .then(() => navigate('/admin'));
+      .then(() => navigate('/admin/login'));
   };
-  // Route
-  const pathname = useRouter().pathname;
-  const navigate = useRouter().push;
-
-  console.log(user);
 
   // Toggle Menu
   const toggle = () => {

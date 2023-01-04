@@ -49,7 +49,7 @@ export default function Home({ reviews, listings }) {
                 </li>
                 <li>
                   <div>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg">
                       <use href="/images/sprite.svg#icon-record" />
                     </svg>
                   </div>
@@ -59,7 +59,7 @@ export default function Home({ reviews, listings }) {
               <ul data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-easing="ease-in-out">
                 <li>
                   <div>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg">
                       <use href="/images/sprite.svg#icon-rental" />
                     </svg>
                   </div>
@@ -67,7 +67,7 @@ export default function Home({ reviews, listings }) {
                 </li>
                 <li>
                   <div>
-                    <svg>
+                    <svg xmlns="http://www.w3.org/2000/svg">
                       <use href="/images/sprite.svg#icon-scenery" />
                     </svg>
                   </div>

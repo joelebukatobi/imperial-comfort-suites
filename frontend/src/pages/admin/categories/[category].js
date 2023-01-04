@@ -83,7 +83,6 @@ export default function index({ category, token }) {
             onChange={(e) => setName(e.target.value)}
             required
             className={'mb-[2.4rem]'}
-            classInput={'mt-[.8rem]'}
           />
           <Textarea
             label={'Description'}

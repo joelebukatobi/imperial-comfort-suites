@@ -17,12 +17,16 @@ import { getUser } from '@/features//user/userActions';
 
 export default function Layout({ children }) {
   const [user, setUser] = useState();
+  const navigate = useRouter().push;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser())
       .unwrap()
       .then((data) => {
         setUser(data);
+        if (data === null) {
+          navigate('/admin/login');
+        }
       });
   }, []);
   return (
@@ -39,7 +43,7 @@ export default function Layout({ children }) {
             <Body>{children}</Body>
           </>
         ) : (
-          <Login />
+          <Loading />
         )}
       </div>
     </>
